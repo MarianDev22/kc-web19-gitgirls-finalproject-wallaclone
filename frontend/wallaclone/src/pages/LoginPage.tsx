@@ -25,11 +25,6 @@ export default function LoginPage() {
             newErrors.password = "La contraseña es obligatoria";
         }
 
-        // Validación: contraseña mínimo 6 caracteres
-        if (password && password.length < 6) {
-            newErrors.password = "La contraseña debe tener al menos 6 caracteres";
-        }
-
         // Si hay errores de campo, no seguimos
         if (newErrors.username || newErrors.password) {
             setErrors(newErrors);
@@ -56,7 +51,7 @@ export default function LoginPage() {
 
     return (
         <div className="min-h-screen flex flex-col">
-            <main className="flex-grow flex items-center justify-center px-4">
+            <main className="grow flex items-center justify-center px-4">
                 <form
                     onSubmit={handleSubmit}
                     className="bg-white shadow-md rounded-lg p-8 w-full max-w-md"
