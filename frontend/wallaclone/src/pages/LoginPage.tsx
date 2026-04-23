@@ -1,99 +1,146 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Footer from "../components/layout/Footer";
 
 const fakeUsers = [
-    { username: "sara", password: "1234" },
-    { username: "marian", password: "abcd" },
+    { username: "sara", password: "123456" },
+    { username: "marian", password: "abcdef" },
 ];
 
 export default function LoginPage() {
+    const navigate = useNavigate();
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    const [error, setError] = useState("");
-    const [success, setSuccess] = useState(false);
+    const [errors, setErrors] = useState<{ username?: string; password?: string; general?: string }>({});
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        setError("");
+        const newErrors: { username?: string; password?: string; general?: string } = {};
 
-        if (!username.trim() || !password.trim()) {
-            setError("Todos los campos son obligatorios");
+        // Validación: campos obligatorios
+        if (!username.trim()) {
+            newErrors.username = "El nombre de usuario es obligatorio";
+        }
+        if (!password) {
+            newErrors.password = "La contraseña es obligatoria";
+        }
+
+        // Validación: contraseña mínimo 6 caracteres
+        if (password && password.length < 6) {
+            newErrors.password = "La contraseña debe tener al menos 6 caracteres";
+        }
+
+        // Si hay errores de campo, no seguimos
+        if (newErrors.username || newErrors.password) {
+            setErrors(newErrors);
             return;
         }
 
+        // Verificar credenciales contra datos falsos
         const user = fakeUsers.find(
-            (u) => u.username === username && u.password === password
+            (u) => u.username === username.trim() && u.password === password
         );
 
         if (!user) {
-            setError("Usuario o contraseña incorrectos");
+            setErrors({ general: "Usuario o contraseña incorrectos" });
             return;
         }
 
-        setSuccess(true);
+        // Simular guardar token/sesión
+        localStorage.setItem("token", "fake-token-" + user.username);
+        localStorage.setItem("user", user.username);
+
+        // Redirigir a la página principal
+        navigate("/");
     };
 
     return (
-        <div className="min-h-screen flex flex-col bg-gray-50">
-            <div className="flex-1 flex items-center justify-center px-4">
-                <div className="w-full max-w-md">
-                    <h1 className="text-2xl font-bold text-center mb-6">Iniciar sesión</h1>
+        <div className="min-h-screen flex flex-col">
+            <main className="flex-grow flex items-center justify-center px-4">
+                <form
+                    onSubmit={handleSubmit}
+                    className="bg-white shadow-md rounded-lg p-8 w-full max-w-md"
+                    noValidate
+                >
+                    <h1 className="text-2xl font-bold text-[#00bba7] mb-6 text-center">
+                        Iniciar sesión
+                    </h1>
 
-                    {success ? (
-                        <div className="bg-green-50 border border-green-200 rounded-lg p-6 text-center">
-                            <p className="text-green-700 font-medium">
-                                ¡Bienvenido, {username}!
-                            </p>
-                            <Link to="/" className="text-sm text-teal-600 hover:underline mt-2 inline-block">
-                                Ir al inicio
-                            </Link>
-                        </div>
-                    ) : (
-                        <form onSubmit={handleSubmit} className="space-y-4">
-                            {error && (
-                                <p className="text-red-500 text-sm text-center">{error}</p>
-                            )}
-
-                            <div>
-                                <label className="block text-sm mb-1">Nombre de usuario</label>
-                                <input
-                                    type="text"
-                                    value={username}
-                                    onChange={(e) => setUsername(e.target.value)}
-                                    className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-teal-400"
-                                    placeholder="Tu nombre de usuario"
-                                />
-                            </div>
-
-                            <div>
-                                <label className="block text-sm mb-1">Contraseña</label>
-                                <input
-                                    type="password"
-                                    value={password}
-                                    onChange={(e) => setPassword(e.target.value)}
-                                    className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-teal-400"
-                                    placeholder="Tu contraseña"
-                                />
-                            </div>
-
-                            <button
-                                type="submit"
-                                className="w-full bg-teal-500 hover:bg-teal-600 text-white font-medium py-2 rounded-lg text-sm transition-colors"
-                            >
-                                Entrar
-                            </button>
-
-                            <p className="text-sm text-center text-gray-500">
-                                ¿No tienes cuenta?{" "}
-                                <Link to="/register" className="text-teal-600 hover:underline">
-                                    Crear cuenta
-                                </Link>
-                            </p>
-                        </form>
+                    {/* Error general */}
+                    {errors.general && (
+                        <p className="text-red-500 text-sm text-center mb-4">
+                            {errors.general}
+                        </p>
                     )}
-                </div>
-            </div>
+
+                    {/* Campo: nombre de usuario */}
+                    <div className="mb-4">
+                        <label htmlFor="username" className="block text-sm font-medium text-gray-700 mb-1">
+                            Nombre de usuario
+                        </label>
+                        <input
+                            id="username"
+                            type="text"
+                            value={username}
+                            onChange={(e) => {
+                                setUsername(e.target.value);
+                                setErrors((prev) => ({ ...prev, username: undefined, general: undefined }));
+                            }}
+                            className={`w-full border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#00bba7] ${errors.username ? "border-red-500" : "border-gray-300"
+                                }`}
+                            placeholder="Tu nombre de usuario"
+                        />
+                        {errors.username && (
+                            <p className="text-red-500 text-xs mt-1">{errors.username}</p>
+                        )}
+                    </div>
+
+                    {/* Campo: contraseña */}
+                    <div className="mb-6">
+                        <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">
+                            Contraseña
+                        </label>
+                        <input
+                            id="password"
+                            type="password"
+                            value={password}
+                            onChange={(e) => {
+                                setPassword(e.target.value);
+                                setErrors((prev) => ({ ...prev, password: undefined, general: undefined }));
+                            }}
+                            className={`w-full border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#00bba7] ${errors.password ? "border-red-500" : "border-gray-300"
+                                }`}
+                            placeholder="Tu contraseña"
+                        />
+                        {errors.password && (
+                            <p className="text-red-500 text-xs mt-1">{errors.password}</p>
+                        )}
+                    </div>
+
+                    {/* Botón de login */}
+                    <button
+                        type="submit"
+                        className="w-full bg-[#00bba7] hover:bg-[#009689] text-white font-semibold py-2 rounded-md transition-colors text-sm"
+                    >
+                        Entrar
+                    </button>
+
+                    {/* Enlaces */}
+                    <div className="mt-4 text-center text-sm text-gray-600 space-y-2">
+                        <p>
+                            <Link to="/forgot-password" className="text-[#00bba7] hover:underline">
+                                ¿Olvidaste tu contraseña?
+                            </Link>
+                        </p>
+                        <p>
+                            ¿No tienes cuenta?{" "}
+                            <Link to="/register" className="text-[#00bba7] hover:underline">
+                                Regístrate
+                            </Link>
+                        </p>
+                    </div>
+                </form>
+            </main>
             <Footer />
         </div>
     );
