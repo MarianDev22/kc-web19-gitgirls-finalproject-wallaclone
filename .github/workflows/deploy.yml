@@ -50,4 +50,4 @@ jobs:
           key: ${{ secrets.SERVER_KEY }}
           source: frontend/wallaclone/dist/*
           target: /home/ubuntu/dist/
-          strip_components: 2
+          strip_components: 3
