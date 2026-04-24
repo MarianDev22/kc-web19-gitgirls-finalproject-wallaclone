@@ -17,7 +17,7 @@ app.use('/auth', authenticationRouter);
 
 //should this go in a serparte file? refactor?
 export const startHttpApi = () => {
-  const url = process.env.API_PORT || 3000;
+  const url = process.env.PORT || 3000;
   app.listen(url, () => {
     console.log('API up & running on port: ', url);
   });
