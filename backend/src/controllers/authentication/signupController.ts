@@ -1,7 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import { authBodyValidator } from './authBodyValidator';
 import { User } from '../../models/User';
-import bcrypt from 'bcrypt';
 import { securityService } from './securityService';
 
 export const signupController = async (req: Request, res: Response, next: NextFunction) => {
