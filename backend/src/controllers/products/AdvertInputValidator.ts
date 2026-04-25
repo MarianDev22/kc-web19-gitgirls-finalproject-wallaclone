@@ -10,7 +10,10 @@ export const createAdBodyValidator = z.object({
 });
 
 export const getAdvertsQueryValidator = z.object({
+  name: z.string().min(3).optional(),
+  minPrice: z.coerce.number().optional(),
+  maxPrice: z.coerce.number().optional(),
+  tag: z.string().optional(),
   page: z.coerce.number().default(1),
   limit: z.coerce.number().default(10),
-  search: z.string().min(3).optional(),
 });
