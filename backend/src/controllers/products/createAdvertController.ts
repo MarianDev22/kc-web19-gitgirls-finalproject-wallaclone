@@ -14,6 +14,7 @@ export const createAdvertController = async (req: Request, res: Response, next: 
       image,
       tags,
       ownerId: req.user?.id ?? '',
+      status: 'AVAILABLE',
     });
     const createdAdvert = await newAdvert.save();
 
@@ -24,6 +25,7 @@ export const createAdvertController = async (req: Request, res: Response, next: 
       price: createdAdvert.price,
       isSale: createdAdvert.isSale,
       ownerId: createdAdvert.ownerId,
+      status: createdAdvert.status,
       message: 'Anuncio creado con éxito',
     });
   } catch (error) {
