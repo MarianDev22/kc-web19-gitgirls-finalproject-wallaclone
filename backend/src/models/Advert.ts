@@ -1,4 +1,5 @@
 import mongoose, { Schema, Types } from 'mongoose';
+import { uppercase } from 'zod';
 
 export interface Advert {
   _id: Types.ObjectId;
@@ -8,18 +9,23 @@ export interface Advert {
   isSale: boolean;
   image?: string;
   tags?: string[];
+  status: 'AVAILABLE' | 'SOLD' | 'RESERVED';
 }
 
 const advertSchema = new Schema(
   {
     name: {
       type: String,
+      required: true,
+      index: true,
     },
     description: {
       type: String,
+      required: true,
     },
     price: {
       type: Number,
+      required: true,
     },
     isSale: {
       type: Boolean,
@@ -33,7 +39,14 @@ const advertSchema = new Schema(
     ownerId: {
       type: Schema.Types.ObjectId,
       ref: 'User',
-      index: true,
+      required: true,
+    },
+    status: {
+      type: String,
+      required: true,
+      uppercase: true,
+      default: 'AVAILABLE',
+      enum: ['AVAILABLE', 'SOLD', 'RESERVED'],
     },
   },
   { timestamps: true }
