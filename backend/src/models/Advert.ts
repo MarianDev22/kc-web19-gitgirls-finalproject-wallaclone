@@ -10,30 +10,33 @@ export interface Advert {
   tags?: string[];
 }
 
-const advertSchema = new Schema({
-  name: {
-    type: String,
+const advertSchema = new Schema(
+  {
+    name: {
+      type: String,
+    },
+    description: {
+      type: String,
+    },
+    price: {
+      type: Number,
+    },
+    isSale: {
+      type: Boolean,
+    },
+    image: {
+      type: String,
+    },
+    tags: {
+      type: [String],
+    },
+    ownerId: {
+      type: Schema.Types.ObjectId,
+      ref: 'User',
+      index: true,
+    },
   },
-  description: {
-    type: String,
-  },
-  price: {
-    type: Number,
-  },
-  isSale: {
-    type: Boolean,
-  },
-  image: {
-    type: String,
-  },
-  tags: {
-    type: [String],
-  },
-  owner: {
-    type: Schema.Types.ObjectId,
-    ref: 'User',
-    index: true,
-  },
-});
+  { timestamps: true }
+);
 
 export const Advert = mongoose.model('Advert', advertSchema, 'adverts');
