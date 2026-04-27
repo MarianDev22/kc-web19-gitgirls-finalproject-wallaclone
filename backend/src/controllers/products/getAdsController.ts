@@ -11,7 +11,6 @@ export const getAdsController = async (req: Request, res: Response, next: NextFu
 
     const skip = (page - 1) * limit;
 
-    //uso tipo any para no tener que crear
     const searchQuery: QueryFilter<Advert> = {
       status: { $in: ['AVAILABLE', 'RESERVED'] },
     };
