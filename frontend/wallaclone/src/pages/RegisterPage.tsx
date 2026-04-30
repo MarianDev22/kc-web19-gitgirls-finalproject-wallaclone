@@ -106,7 +106,7 @@ export default function RegisterPage() {
                             ¡Registro completado!
                         </h2>
                         <p className="text-gray-600 mb-6">
-                            Bienvenid@{""}
+                            Bienvenid@{" "}
                             <span className="font-semibold">{formData.username}</span>, tu cuenta ha sido creada y la sesión se ha iniciado correctamente.
                         </p>
                         <Link
