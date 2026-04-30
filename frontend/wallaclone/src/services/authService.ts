@@ -6,16 +6,27 @@ type RegisterUserData = {
     password: string;
 };
 
-type AuthUser = {
-    id: string;
+type LoginUserData = {
     username: string;
-    email: string;
+    password: string;
+};
+
+type AuthUser = {
+    id?: string;
+    username: string;
+    email?: string;
 };
 
 type RegisterUserResponse = {
     message: string;
     token: string;
     user: AuthUser;
+};
+
+type LoginResponse = {
+    message?: string;
+    token: string;
+    user?: AuthUser;
 };
 
 export async function registerUser(
@@ -35,6 +46,30 @@ export async function registerUser(
         throw new Error(
             data?.message ?? data?.error ?? "No se ha podido completar el registro",
         );
+    }
+
+    return data;
+}
+
+export async function loginUser(userData: LoginUserData): Promise<LoginResponse> {
+    const response = await fetch(`${API_BASE_URL}/auth/login`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(userData),
+    });
+
+    const data = await response.json().catch(() => null);
+
+    if (!response.ok) {
+        throw new Error(
+            data?.message ?? data?.error ?? "Usuario o contraseña incorrectos",
+        );
+    }
+
+    if (!data?.token) {
+        throw new Error("La respuesta de login no incluye token");
     }
 
     return data;
