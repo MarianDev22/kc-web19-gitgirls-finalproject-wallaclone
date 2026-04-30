@@ -27,7 +27,9 @@ export const signupController = async (req: Request, res: Response, next: NextFu
     // respuesta json: user, token y mensaje
     res.status(201).json({
       user: {
+        id: createdUser._id,
         username: createdUser.username,
+        email: createdUser.email,
       },
       token: newToken,
       message: 'Usuario registrado correctamente',

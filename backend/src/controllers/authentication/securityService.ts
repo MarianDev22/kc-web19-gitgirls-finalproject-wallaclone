@@ -4,13 +4,17 @@ import { UnauthorizedError } from '../../errors/domainError';
 
 export const securityService = {
   hashPassword: async (clearPassword: string) => {
-    const hashedPassword = await bcrypt.hash(clearPassword, 7);
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(clearPassword, salt);
 
     return hashedPassword;
   },
 
   generateJWT: (userId: string) => {
-    const secret = process.env.JWT_SECRET || 'T3mpKey';
+    const secret = process.env.JWT_SECRET;
+    if (!secret) {
+      throw new Error('JWT_SECRET is required in .env file');
+    }
     const token = jwt.sign({ userId }, secret, {
       expiresIn: '1h',
     });
@@ -21,7 +25,7 @@ export const securityService = {
     const isMatch = await bcrypt.compare(incomingPassword, userPassword);
 
     if (!isMatch) {
-      throw new UnauthorizedError('Contraseña inválida');
+      throw new UnauthorizedError('Credenciales incorrectas');
     }
 
     return isMatch;
