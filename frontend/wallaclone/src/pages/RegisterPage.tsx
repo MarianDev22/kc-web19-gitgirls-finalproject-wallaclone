@@ -74,13 +74,17 @@ export default function RegisterPage() {
         try {
             setIsLoading(true);
 
-            await registerUser({
+            const data = await registerUser({
                 username: formData.username.trim(),
                 email: formData.email.trim().toLowerCase(),
                 password: formData.password,
             });
 
+            localStorage.setItem("token", data.token);
+            localStorage.setItem("user", JSON.stringify(data.user));
+
             setSuccess(true);
+
         } catch (error) {
             setApiError(
                 error instanceof Error
@@ -102,15 +106,14 @@ export default function RegisterPage() {
                             ¡Registro completado!
                         </h2>
                         <p className="text-gray-600 mb-6">
-                            Bienvenid@{" "}
-                            <span className="font-semibold">{formData.username}</span>, tu
-                            cuenta ha sido creada.
+                            Bienvenid@{""}
+                            <span className="font-semibold">{formData.username}</span>, tu cuenta ha sido creada y la sesión se ha iniciado correctamente.
                         </p>
                         <Link
-                            to="/login"
+                            to="/"
                             className="inline-block bg-[#00bba7] hover:bg-[#009689] text-white font-semibold py-2.5 px-6 rounded-lg transition-colors"
                         >
-                            Iniciar sesión
+                            Ir al inicio
                         </Link>
                     </div>
                 </main>
@@ -152,8 +155,8 @@ export default function RegisterPage() {
                                 onChange={handleChange}
                                 placeholder="ej: sara_dev"
                                 className={`w-full px-4 py-2.5 text-sm rounded-lg border ${errors.username
-                                        ? "border-red-400 focus:ring-red-300"
-                                        : "border-gray-300 focus:ring-[#00bba7]/30"
+                                    ? "border-red-400 focus:ring-red-300"
+                                    : "border-gray-300 focus:ring-[#00bba7]/30"
                                     } focus:outline-none focus:ring-2 transition-colors`}
                             />
                             {errors.username && (
@@ -178,8 +181,8 @@ export default function RegisterPage() {
                                 onChange={handleChange}
                                 placeholder="tu@email.com"
                                 className={`w-full px-4 py-2.5 text-sm rounded-lg border ${errors.email
-                                        ? "border-red-400 focus:ring-red-300"
-                                        : "border-gray-300 focus:ring-[#00bba7]/30"
+                                    ? "border-red-400 focus:ring-red-300"
+                                    : "border-gray-300 focus:ring-[#00bba7]/30"
                                     } focus:outline-none focus:ring-2 transition-colors`}
                             />
                             {errors.email && (
@@ -206,8 +209,8 @@ export default function RegisterPage() {
                                 maxLength={64}
                                 placeholder="Mínimo 6 caracteres"
                                 className={`w-full px-4 py-2.5 text-sm rounded-lg border ${errors.password
-                                        ? "border-red-400 focus:ring-red-300"
-                                        : "border-gray-300 focus:ring-[#00bba7]/30"
+                                    ? "border-red-400 focus:ring-red-300"
+                                    : "border-gray-300 focus:ring-[#00bba7]/30"
                                     } focus:outline-none focus:ring-2 transition-colors`}
                             />
                             {errors.password && (
@@ -234,8 +237,8 @@ export default function RegisterPage() {
                                 maxLength={64}
                                 placeholder="Repite tu contraseña"
                                 className={`w-full px-4 py-2.5 text-sm rounded-lg border ${errors.confirmPassword
-                                        ? "border-red-400 focus:ring-red-300"
-                                        : "border-gray-300 focus:ring-[#00bba7]/30"
+                                    ? "border-red-400 focus:ring-red-300"
+                                    : "border-gray-300 focus:ring-[#00bba7]/30"
                                     } focus:outline-none focus:ring-2 transition-colors`}
                             />
                             {errors.confirmPassword && (

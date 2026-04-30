@@ -6,7 +6,21 @@ type RegisterUserData = {
     password: string;
 };
 
-export async function registerUser(userData: RegisterUserData) {
+type AuthUser = {
+    id: string;
+    username: string;
+    email: string;
+};
+
+type RegisterUserResponse = {
+    message: string;
+    token: string;
+    user: AuthUser;
+};
+
+export async function registerUser(
+    userData: RegisterUserData,
+): Promise<RegisterUserResponse> {
     const response = await fetch(`${API_BASE_URL}/auth/register`, {
         method: "POST",
         headers: {
