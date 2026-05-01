@@ -9,7 +9,7 @@ export class DomainError extends Error {
 export class EntityNotFoundError extends DomainError {
   readonly name = 'EntityNotFoundError';
   constructor(entity: string, id: string) {
-    super(`${entity} with id ${id} could not be found`);
+    super(`No se ha econtrado el ${entity} con id ${id}`);
   }
 }
 export class BusinessConflictError extends DomainError {
