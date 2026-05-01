@@ -8,26 +8,32 @@ export class DomainError extends Error {
 
 export class EntityNotFoundError extends DomainError {
   readonly name = 'EntityNotFoundError';
+
   constructor(entity: string, id: string) {
-    super(`${entity} with id ${id} could not be found`);
+    super(`No se ha encontrado ${entity} con id ${id}`);
   }
 }
+
 export class BusinessConflictError extends DomainError {
   readonly name = 'BusinessConflictError';
-  constructor(message = 'conflict') {
+
+  constructor(message = 'Conflicto en la operación') {
     super(message);
   }
 }
+
 export class UnauthorizedError extends DomainError {
-  readonly name = 'UnauthorizedError';//401
-  constructor(message = 'unauthorized error') {
+  readonly name = 'UnauthorizedError';
+
+  constructor(message = 'No autorizado') {
     super(message);
   }
 }
 
 export class ForbiddenOperationError extends DomainError {
-  readonly name = 'ForbiddenOperationError';//403
-  constructor(message = 'operation not allowed') {
+  readonly name = 'ForbiddenOperationError';
+
+  constructor(message = 'Operación no permitida') {
     super(message);
   }
 }

@@ -3,13 +3,13 @@ import 'dotenv/config';
 import mongoose from 'mongoose';
 import { startHttpApi } from '../app';
 
-//should this be refactored into a different file?
 const connectMongoDb = async () => {
   const url = process.env.MONGO_URI || 'mongodb://localhost:27017';
-  console.log(url);
-  console.log('Connecting to mongodb...');
+
+  // Mejor no imprimir la URI para evitar exponer credenciales en logs
+  console.log('Conectando a MongoDB...');
   await mongoose.connect(url);
-  console.log('mongodb connected =)');
+  console.log('MongoDB conectado');
 };
 
 const executeApp = async () => {
@@ -17,7 +17,7 @@ const executeApp = async () => {
     await connectMongoDb();
     startHttpApi();
   } catch (error) {
-    console.log('unable to start application: ', error);
+    console.log('No se ha podido iniciar la aplicación:', error);
     process.exit(1);
   }
 };
