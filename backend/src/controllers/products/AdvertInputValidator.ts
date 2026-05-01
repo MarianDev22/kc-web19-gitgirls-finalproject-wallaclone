@@ -1,4 +1,5 @@
 import * as z from 'zod';
+import { Types } from 'mongoose';
 
 const trimmedString = z.string().trim();
 
@@ -13,15 +14,13 @@ const paginationValidator = {
   limit: z.coerce.number().int().positive().max(100).default(10),
 };
 
-const hasValidPriceRange = ({
-  minPrice,
-  maxPrice,
-}: {
-  minPrice?: number;
-  maxPrice?: number;
-}) => {
+const hasValidPriceRange = ({ minPrice, maxPrice }: { minPrice?: number; maxPrice?: number }) => {
   return minPrice === undefined || maxPrice === undefined || minPrice <= maxPrice;
 };
+
+const mongoIdSchema = z.string().refine(val => Types.ObjectId.isValid(val), {
+  message: 'El ID proporcionado no tiene un formato válido',
+});
 
 export const createAdBodyValidator = z.object({
   name: trimmedString.min(2, {
@@ -46,3 +45,7 @@ export const getAdvertsQueryValidator = z
     error: 'El precio mínimo debe ser menor o igual que el precio máximo',
     path: ['minPrice'],
   });
+
+export const mongoIdValidator = z.object({
+  id: mongoIdSchema,
+});
