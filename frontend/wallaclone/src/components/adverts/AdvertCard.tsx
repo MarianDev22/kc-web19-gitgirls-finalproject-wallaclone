@@ -18,12 +18,8 @@ function getAdvertStatusLabel(status: Advert["status"]) {
     return statusLabels[status] ?? status;
 }
 
-function getOwnerName(ownerId: Advert["ownerId"]) {
-    if (!ownerId || typeof ownerId === "string") {
-        return "Usuario";
-    }
-
-    return ownerId.username ?? "Usuario";
+function getOwnerName(owner?: Advert["owner"]) {
+    return owner?.username ?? "Usuario";
 }
 
 function AdvertCard({ advert }: AdvertCardProps) {
@@ -67,7 +63,7 @@ function AdvertCard({ advert }: AdvertCardProps) {
                     <div>
                         <p className="text-xs text-gray-500">Publicado por</p>
                         <p className="font-medium text-gray-800">
-                            {getOwnerName(advert.ownerId)}
+                            {getOwnerName(advert.owner)}
                         </p>
                     </div>
 

@@ -1,16 +1,7 @@
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL ?? "http://localhost:3000";
 
-type AdvertOwner =
-    | string
-    | {
-        _id?: string;
-        id?: string;
-        username?: string;
-    };
-
 export type Advert = {
-    _id: string;
-    id?: string;
+    id: string;
     name: string;
     description: string;
     price: number;
@@ -18,9 +9,11 @@ export type Advert = {
     image: string;
     tags: string[];
     status: "AVAILABLE" | "RESERVED" | "SOLD";
-    ownerId?: AdvertOwner;
-    createdAt?: string;
-    updatedAt?: string;
+    ownerId: string;
+    owner?: {
+        id: string;
+        username?: string;
+    };
 };
 
 type GetAdvertsResponse = {
