@@ -2,8 +2,16 @@ import express from 'express';
 import { authenticationRouter } from './routes/authenticationRoutes';
 import { errorMiddleware } from './middlewares/errorMiddleware';
 import { webRouter } from './routes/webRoutes';
+import cors from 'cors';
 
 export const app = express();
+
+//CORS middleware
+app.use(
+  cors({
+    origin: process.env.CORS_ORIGIN ?? 'http://localhost:5173',
+  })
+);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -29,4 +37,3 @@ export const startHttpApi = () => {
     console.log('API en funcionamiento en el puerto:', port);
   });
 };
-
