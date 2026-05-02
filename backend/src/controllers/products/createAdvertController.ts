@@ -2,6 +2,7 @@ import type { RequestHandler } from 'express';
 import { UnauthorizedError } from '../../errors/domainError';
 import { Advert } from '../../models/Advert';
 import { createAdBodyValidator } from './AdvertInputValidator';
+import { mapAdvertToResponse } from './advertResponseMapper';
 
 export const createAdvertController: RequestHandler = async (req, res, next) => {
   try {
@@ -24,17 +25,8 @@ export const createAdvertController: RequestHandler = async (req, res, next) => 
 
     const createdAdvert = await newAdvert.save();
 
-    // respuesta: datos anuncio + mensaje de éxito
     res.status(201).json({
-      id: createdAdvert._id,
-      name: createdAdvert.name,
-      description: createdAdvert.description,
-      price: createdAdvert.price,
-      isSale: createdAdvert.isSale,
-      image: createdAdvert.image,
-      tags: createdAdvert.tags,
-      ownerId: createdAdvert.ownerId,
-      status: createdAdvert.status,
+      ...mapAdvertToResponse(createdAdvert),
       message: 'Anuncio creado con éxito',
     });
   } catch (error) {
