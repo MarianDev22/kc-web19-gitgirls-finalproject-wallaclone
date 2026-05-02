@@ -1,14 +1,14 @@
-import { Request, Response, NextFunction } from 'express';
-import { QueryFilter } from 'mongoose';
+import type { RequestHandler } from 'express';
+import type { QueryFilter } from 'mongoose';
 import { Advert } from '../../models/Advert';
 import { escapeRegex } from '../../utils/stringUtils';
 import { getAdvertsQueryValidator } from './AdvertInputValidator';
+import { mapAdvertToResponse } from './advertResponseMapper';
 
-export const getAdsController = async (req: Request, res: Response, next: NextFunction) => {
+export const getAdsController: RequestHandler = async (req, res, next) => {
   try {
-    const { name, minPrice, maxPrice, tag, limit, page } = getAdvertsQueryValidator.parse(
-      req.query
-    );
+    const { name, minPrice, maxPrice, tag, limit, page } =
+      getAdvertsQueryValidator.parse(req.query);
 
     const skip = (page - 1) * limit;
 
@@ -24,22 +24,31 @@ export const getAdsController = async (req: Request, res: Response, next: NextFu
       searchQuery.tags = tag;
     }
 
-    if (minPrice !== undefined || maxPrice !== undefined) {
+    const hasPriceFilter = minPrice !== undefined || maxPrice !== undefined;
+
+    if (hasPriceFilter) {
       searchQuery.price = {};
-      if (minPrice !== undefined) searchQuery.price.$gte = minPrice;
-      if (maxPrice !== undefined) searchQuery.price.$lte = maxPrice;
+
+      if (minPrice !== undefined) {
+        searchQuery.price.$gte = minPrice;
+      }
+
+      if (maxPrice !== undefined) {
+        searchQuery.price.$lte = maxPrice;
+      }
     }
 
-    const advertList = await Advert.find(searchQuery)
-      .sort({ createdAt: -1 })
-      .skip(skip)
-      .limit(limit)
-      .populate('ownerId', 'username');
-
-    const totalAdverts = await Advert.countDocuments(searchQuery);
+    const [advertList, totalAdverts] = await Promise.all([
+      Advert.find(searchQuery)
+        .sort({ createdAt: -1 })
+        .skip(skip)
+        .limit(limit)
+        .populate('ownerId', 'username'),
+      Advert.countDocuments(searchQuery),
+    ]);
 
     res.status(200).json({
-      content: advertList,
+      content: advertList.map((advert) => mapAdvertToResponse(advert)),
       total: totalAdverts,
       page,
       limit,
