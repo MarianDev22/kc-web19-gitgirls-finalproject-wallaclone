@@ -6,7 +6,7 @@ const getJWTSecret = () => {
   const jwtSecret = process.env.JWT_SECRET;
 
   if (!jwtSecret) {
-    throw new Error('JWT_SECRET is required in .env file');
+    throw new Error('JWT_SECRET no está configurado en las variables de entorno');
   }
 
   return jwtSecret;
@@ -46,11 +46,9 @@ export const securityService = {
       const data = jwt.verify(token, jwtSecret) as { userId: string };
 
       return data;
-    } catch (error) {
-      const errorMessage =
-        error instanceof Error ? error.message : 'jwt.verify error';
-
-      throw new UnauthorizedError(`Error verifying JWT: ${errorMessage}`);
+    } catch {
+      // Para no exponer detalles internos del token
+      throw new UnauthorizedError('Token de autenticación inválido');
     }
   },
 };

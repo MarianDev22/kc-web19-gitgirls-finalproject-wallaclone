@@ -19,9 +19,13 @@ jobs:
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SERVER_KEY }}
           script: |
-            sudo -u wallaclone git -C /home/wallaclone/kc-web19-gitgirls-finalproject-wallaclone pull
-            cd /home/wallaclone/kc-web19-gitgirls-finalproject-wallaclone/backend
-            sudo -u wallaclone npm install
+            sudo -u wallaclone bash -c '
+            git -C /home/wallaclone/kc-web19-gitgirls-finalproject-wallaclone pull &&
+            cd /home/wallaclone/kc-web19-gitgirls-finalproject-wallaclone/backend &&
+            export PATH="/home/wallaclone/.nvm/versions/node/v22.20.0/bin:$PATH" &&
+            npm install &&
+            npm run build
+            '
             sudo supervisorctl restart wallaclone
 
   deploy-frontend:

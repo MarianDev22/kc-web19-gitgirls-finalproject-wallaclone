@@ -2,29 +2,38 @@ import express from 'express';
 import { authenticationRouter } from './routes/authenticationRoutes';
 import { errorMiddleware } from './middlewares/errorMiddleware';
 import { webRouter } from './routes/webRoutes';
+import cors from 'cors';
 
 export const app = express();
+
+//CORS middleware
+app.use(
+  cors({
+    origin: process.env.CORS_ORIGIN ?? 'http://localhost:5173',
+  })
+);
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-//health
-app.use('/health', (req, res) => {
+// Healthcheck
+app.use('/health', (_req, res) => {
   res.json({
-    info: 'Git Girls API up & running',
+    info: 'Git Girls API en funcionamiento',
   });
 });
 
-//Routes
+// Rutas
 app.use('/auth', authenticationRouter);
 app.use('/adverts', webRouter);
 
-//error MW
+// Middleware de errores
 app.use(errorMiddleware);
 
-//should this go in a serparte file? refactor?
 export const startHttpApi = () => {
-  const url = process.env.PORT || 3000;
-  app.listen(url, () => {
-    console.log('API up & running on port: ', url);
+  const port = process.env.PORT || 3000;
+
+  app.listen(port, () => {
+    console.log('API en funcionamiento en el puerto:', port);
   });
 };
