@@ -1,0 +1,42 @@
+backend:
+  - changed-files:
+      - any-glob-to-any-file: 'backend/**'
+
+frontend:
+  - changed-files:
+      - any-glob-to-any-file: 'frontend/**'
+
+documentation:
+  - changed-files:
+      - any-glob-to-any-file:
+          - '**/*.md'
+          - 'docs/**'
+
+test:
+  - changed-files:
+      - any-glob-to-any-file:
+          - '**/*.test.*'
+          - '**/*.spec.*'
+          - '**/__tests__/**'
+          - '**/tests/**'
+
+chore:
+  - changed-files:
+      - any-glob-to-any-file:
+          - '.github/**'
+          - '.gitignore'
+          - 'package.json'
+          - 'package-lock.json'
+          - 'backend/package.json'
+          - 'backend/package-lock.json'
+          - 'frontend/**/package.json'
+          - 'frontend/**/package-lock.json'
+
+bug:
+  - head-branch: '^(fix|bugfix|hotfix)/'
+
+enhancement:
+  - head-branch: '^(feat|feature)/'
+
+not-mvp:
+  - head-branch: '(not-mvp|post-mvp)'
