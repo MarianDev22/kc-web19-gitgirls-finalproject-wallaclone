@@ -26,30 +26,40 @@ jobs:
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SERVER_KEY }}
           timeout: 60s
-          command_timeout: 5m
+          command_timeout: 10m
           debug: true
           script: |
-            echo "Iniciando diagnóstico SSH..."
+            echo "Iniciando deploy del backend..."
+
+            sudo -u wallaclone bash -c '
+            set -e
             
-            echo "1. Usuario conectado por SSH:"
-            whoami
+            echo "1. Actualizando el repositorio..."
+            git -C /home/wallaclone/kc-web19-gitgirls-finalproject-wallaclone pull
 
-            echo "2. Hostname del servidor:"
-            hostname
+            echo "2. Entrando en la carpeta del backend..."
+            cd /home/wallaclone/kc-web19-gitgirls-finalproject-wallaclone/backend
 
-            echo "3. Fecha del servidor:"
-            date
+            echo "3. Configurando la versión de Node..."
+            export PATH="/home/wallaclone/.nvm/versions/node/v22.20.0/bin:$PATH"
 
-            echo "4. Comprobando sudo hacia usuario wallaclone..."
-            sudo -n -u wallaclone whoami
+            echo "4. Comprobando versiones de Node y npm"
+            node -v
+            npm -v
 
-            echo "5. Comprobando carpeta del proyecto..."
-            sudo -n -u wallaclone ls -la /home/wallaclone/kc-web19-gitgirls-finalproject-wallaclone
+            echo "5. Instalando dependencias del backend..."
+            npm ci
 
-            echo "6. Comprobando carpeta del backend..."
-            sudo -n -u wallaclone ls -la /home/wallaclone/kc-web19-gitgirls-finalproject-wallaclone/backend
+            echo "6. Compilando backend..."
+            npm run build
 
-            echo "Diagnóstico SSH finalizado correctamente."
+            echo "7. Build del backend finalizado correctamente"
+            '
+
+            echo "8. Reiniciando el servicio del backend..."
+            sudo supervisorctl restart wallaclone
+
+            echo "Deploy del backend finalizado correctamente"
 
   deploy-frontend:
     name: Build and deploy frontend
