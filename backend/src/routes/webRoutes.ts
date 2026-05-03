@@ -10,3 +10,4 @@ export const webRouter = express.Router();
 webRouter.post('/', authMiddleware, createAdvertController);
 webRouter.get('/', getAdsController);
 webRouter.delete('/:id', authMiddleware, deleteAdvertController);
+webRouter.post('/:id/contact', authMiddleware, deleteAdvertController);
