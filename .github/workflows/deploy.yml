@@ -8,6 +8,8 @@ on:
       - ".github/**"
       - "**/*.md"
 
+  workflow_dispatch:
+
 jobs:
   deploy-backend:
     name: Deploy backend
@@ -23,7 +25,9 @@ jobs:
           host: ${{ secrets.SERVER_HOST }}
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SERVER_KEY }}
+          timeout: 60s
           command_timeout: 30m
+          debug: true
           script: |
             sudo -u wallaclone bash -c '
             git -C /home/wallaclone/kc-web19-gitgirls-finalproject-wallaclone pull &&
