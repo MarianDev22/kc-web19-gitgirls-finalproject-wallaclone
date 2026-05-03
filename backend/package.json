@@ -10,7 +10,8 @@
     "prettier": "prettier --write .",
     "typecheck": "tsc --noEmit",
     "build": "rimraf dist && npm run typecheck && esbuild src/bin/www.ts --bundle --platform=node --format=esm --outdir=dist --packages=external",
-    "start": "node dist/www.js"
+    "start": "node dist/www.js",
+    "seed:adverts": "tsx src/scripts/seedAdverts.ts"
   },
   "dependencies": {
     "@types/jsonwebtoken": "^9.0.10",
