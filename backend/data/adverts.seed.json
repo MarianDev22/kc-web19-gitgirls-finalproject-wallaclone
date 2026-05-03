@@ -1,0 +1,1302 @@
+[
+    {
+        "name": "Samsung Galaxy A52 negro 128GB",
+        "description": "Pantalla sin grietas, batería aguanta el día y va con cargador USB-C. La cámara trasera tiene un roce leve alrededor.",
+        "price": 145,
+        "isSale": true,
+        "tags": [
+            "movil",
+            "samsung",
+            "android"
+        ],
+        "image": "https://m.media-amazon.com/images/I/71B1sy2aASL.jpg",
+        "status": "AVAILABLE"
+    },
+    {
+        "name": "iPhone SE rojo 64GB segunda generación",
+        "description": "Batería al 82%, incluye funda negra y cable Lightning. La pantalla está cuidada, con alguna marca fina de uso.",
+        "price": 165,
+        "isSale": true,
+        "tags": [
+            "movil",
+            "iphone",
+            "telefono"
+        ],
+        "image": "https://i.blogs.es/56b53b/1366_2000/1366_2000.webp",
+        "status": "AVAILABLE"
+    },
+    {
+        "name": "Xiaomi Redmi Note 11 azul 128GB",
+        "description": "Va fluido para redes y fotos, pantalla AMOLED limpia y batería con buena duración. Se entrega con funda de silicona.",
+        "price": 118,
+        "isSale": true,
+        "tags": [
+            "movil",
+            "xiaomi",
+            "android"
+        ],
+        "image": "https://m.media-amazon.com/images/I/41eAlSdVktL.jpg",
+        "status": "AVAILABLE"
+    },
+    {
+        "name": "Google Pixel 6a blanco 128GB",
+        "description": "Cámara muy nítida y batería correcta. Lleva protector puesto y cargador compatible, con pequeño golpe en el marco inferior.",
+        "price": 230,
+        "isSale": true,
+        "tags": [
+            "movil",
+            "pixel",
+            "camara"
+        ],
+        "image": "https://images.stockx.com/images/Google-Pixel-6a-128GB-US-Unlocked-GA03714-US-Chalk.jpg?fit=fill&bg=FFFFFF&w=700&h=500&fm=webp&auto=compress&q=90&dpr=2&trim=color&updated_at=1665163122",
+        "status": "AVAILABLE"
+    },
+    {
+        "name": "Motorola Moto G82 gris 128GB",
+        "description": "Pantalla grande de 6,6 pulgadas, buen sonido y batería amplia. Incluyo funda azul y caja, sin cargador original.",
+        "price": 135,
+        "isSale": true,
+        "tags": [
+            "movil",
+            "motorola",
+            "android"
+        ],
+        "image": "https://i.blogs.es/8e31ad/motog82/1200_630.jpg",
+        "status": "AVAILABLE"
+    },
+    {
+        "name": "Portátil Lenovo IdeaPad 15 Ryzen 5",
+        "description": "Tiene 16GB de RAM, SSD de 512GB y cargador original. La batería dura unas 4 horas con uso de clase.",
+        "price": 390,
+        "isSale": true,
+        "tags": [
+            "portatil",
+            "ordenador",
+            "estudio"
+        ],
+        "image": "https://laptopmedia.com/wp-content/uploads/2022/09/1-16-e1662623940737.jpg",
+        "status": "AVAILABLE"
+    },
+    {
+        "name": "MacBook Air 13 gris 2017",
+        "description": "Teclado español, SSD de 256GB y cargador MagSafe. La batería pide cambio si se usa muchas horas fuera.",
+        "price": 315,
+        "isSale": true,
+        "tags": [
+            "portatil",
+            "macbook",
+            "oficina"
+        ],
+        "image": "https://www.aiho.es/8933-superlarge_default/macbook-air-13-i5-18ghz-8gb.jpg",
+        "status": "AVAILABLE"
+    },
+    {
+        "name": "PC sobremesa compacto i5 con 16GB RAM",
+        "description": "Equipo de oficina con SSD de 480GB, Windows instalado y WiFi USB. No incluye monitor ni teclado.",
+        "price": 260,
+        "isSale": true,
+        "tags": [
+            "ordenador",
+            "pc",
+            "sobremesa"
+        ],
+        "image": "https://m.media-amazon.com/images/I/51XEy2vfGGL._AC_UF894,1000_QL80_.jpg",
+        "status": "AVAILABLE"
+    },
+    {
+        "name": "Monitor IPS 24 pulgadas Full HD",
+        "description": "Pantalla mate, peana regulable en inclinación y entrada HDMI. Tiene un puntito claro en una esquina que apenas molesta.",
+        "price": 72,
+        "isSale": true,
+        "tags": [
+            "monitor",
+            "informatica",
+            "pantalla"
+        ],
+        "image": "https://www.lg.com/content/dam/channel/wcms/es/images/monitores/24mp88hv-s_aeu_eees_es_c/gallery/medium01.jpg",
+        "status": "AVAILABLE"
+    },
+    {
+        "name": "Teclado mecánico compacto blanco",
+        "description": "Formato 75%, switches suaves y cable USB-C desmontable. Algunas teclas tienen brillo por el uso, pero escribe muy cómodo.",
+        "price": 38,
+        "isSale": true,
+        "tags": [
+            "teclado",
+            "gaming",
+            "oficina"
+        ],
+        "image": "https://redragon.es/content/uploads/2023/07/230608-Renders-Redragon-Tamano-60-poder-100.jpg",
+        "status": "AVAILABLE"
+    },
+    {
+        "name": "iPad 9ª generación plata 64GB",
+        "description": "Pantalla de 10,2 pulgadas, batería cuidada y funda gris incluida. Ideal para apuntes, series y navegación.",
+        "price": 245,
+        "isSale": true,
+        "tags": [
+            "tablet",
+            "ipad",
+            "estudio"
+        ],
+        "image": "https://www.aiho.es/27096-superlarge_default/ipad-10-gen-2022-wifi-64gb-plata-reacondicionado.jpg",
+        "status": "AVAILABLE"
+    },
+    {
+        "name": "Samsung Galaxy Tab A8 32GB",
+        "description": "Tablet de 10,5 pulgadas con funda tipo libro. La pantalla está limpia y la batería responde bien para vídeos.",
+        "price": 125,
+        "isSale": true,
+        "tags": [
+            "tablet",
+            "samsung",
+            "android"
+        ],
+        "image": "https://thumbs.ielectro.es/product/med/25275.webp",
+        "status": "AVAILABLE"
+    },
+    {
+        "name": "Lenovo Tab M10 con lápiz táctil",
+        "description": "Incluye lápiz, funda azul y cargador. Tiene 64GB y va bien para clases, lectura y dibujos sencillos.",
+        "price": 110,
+        "isSale": true,
+        "tags": [
+            "tablet",
+            "lenovo",
+            "lapiz"
+        ],
+        "image": "https://thumbs.ielectro.es/product/med/31041-3.webp",
+        "status": "AVAILABLE"
+    },
+    {
+        "name": "Nintendo Switch gris con dock",
+        "description": "Incluye dock, HDMI, cargador y dos joy-con grises. La consola tiene marcas normales en la parte trasera.",
+        "price": 210,
+        "isSale": true,
+        "tags": [
+            "consola",
+            "switch",
+            "videojuegos"
+        ],
+        "image": "https://www.masgamers.com/wp-content/uploads/2026/03/image-31.png",
+        "status": "AVAILABLE"
+    },
+    {
+        "name": "PlayStation 4 Slim 500GB negra",
+        "description": "Con mando, cable HDMI y tres juegos físicos. El ventilador suena algo más en juegos pesados, pero no se apaga.",
+        "price": 155,
+        "isSale": true,
+        "tags": [
+            "consola",
+            "playstation",
+            "juegos"
+        ],
+        "image": "https://m.media-amazon.com/images/I/61fK7yqGf6L.jpg",
+        "status": "AVAILABLE"
+    },
+    {
+        "name": "Xbox Series S 512GB blanca",
+        "description": "Va con mando original, cable HDMI y caja. Tiene poco uso y se entrega restablecida de fábrica.",
+        "price": 225,
+        "isSale": true,
+        "tags": [
+            "consola",
+            "xbox",
+            "gaming"
+        ],
+        "image": "https://colombianup.com/wp-content/uploads/2025/01/02-xbox-series-s-blanca-512-gb-controles-colombian-up.jpg",
+        "status": "AVAILABLE"
+    },
+    {
+        "name": "Lote de juegos de Nintendo 3DS",
+        "description": "Son 6 juegos con caja, todos probados. Algunas carátulas tienen señales de estantería, los cartuchos están limpios.",
+        "price": 58,
+        "isSale": true,
+        "tags": [
+            "videojuegos",
+            "nintendo",
+            "lote"
+        ],
+        "image": "https://i.etsystatic.com/18269348/r/il/4a1fdd/6299952851/il_fullxfull.6299952851_aqv1.jpg",
+        "status": "AVAILABLE"
+    },
+    {
+        "name": "Mando inalámbrico para Xbox negro",
+        "description": "Botones firmes, sticks sin deriva apreciable y tapa de pilas correcta. No incluyo cable ni pilas.",
+        "price": 34,
+        "isSale": true,
+        "tags": [
+            "mando",
+            "xbox",
+            "gaming"
+        ],
+        "image": "https://m.media-amazon.com/images/I/61rUMbRaMtL._AC_UF894,1000_QL80_.jpg",
+        "status": "AVAILABLE"
+    },
+    {
+        "name": "Sofá cama gris de tres plazas",
+        "description": "Mide 205 cm de largo, tapizado gris y apertura sencilla. Tiene un roce lateral, se recoge desmontado en portal.",
+        "price": 180,
+        "isSale": true,
+        "tags": [
+            "sofa",
+            "mueble",
+            "hogar"
+        ],
+        "image": "https://www.miliboo.es/sofa-cama-3-plazas-nordico-gris-claro-con-colchon-de-18-cm-skandy-52020-65ce306c87fd7_1200_800_0.jpg",
+        "status": "AVAILABLE"
+    },
+    {
+        "name": "Mesa de comedor extensible roble claro",
+        "description": "Medidas 140 a 190 cm, tablero laminado en roble claro. Algún roce en una pata, caben 6 personas cómodas.",
+        "price": 120,
+        "isSale": true,
+        "tags": [
+            "mesa",
+            "mueble",
+            "comedor"
+        ],
+        "image": "https://www.miliboo.es/mesa-rectangular-extensible-con-extensiones-integradas-de-roble-claro-140-170-cm-ank-55287-64f1dc949ecda_1200_800_0.jpg",
+        "status": "AVAILABLE"
+    },
+    {
+        "name": "Estantería blanca de cinco baldas",
+        "description": "Mide 180x80 cm, melamina blanca y baldas regulables. Hay que venir a recogerla, se puede desmontar.",
+        "price": 45,
+        "isSale": true,
+        "tags": [
+            "estanteria",
+            "mueble",
+            "almacenaje"
+        ],
+        "image": "https://m.media-amazon.com/images/I/416oyir5PNL.jpg",
+        "status": "AVAILABLE"
+    },
+    {
+        "name": "Cabecero tapizado beige para cama 150",
+        "description": "Tapizado en tela beige, ancho 160 cm y altura 120 cm. Tiene dos marcas pequeñas detrás que no se ven colocado.",
+        "price": 65,
+        "isSale": true,
+        "tags": [
+            "cabecero",
+            "dormitorio",
+            "mueble"
+        ],
+        "image": "https://cdn1.vente-unique.com/thumbnails/product/3581/3581536/large/0/46264971.webp",
+        "status": "AVAILABLE"
+    },
+    {
+        "name": "Cómoda de madera con cuatro cajones",
+        "description": "Color nogal, cajones amplios y tiradores metálicos. Mide 85x75 cm, con una esquina marcada por una mudanza.",
+        "price": 75,
+        "isSale": true,
+        "tags": [
+            "comoda",
+            "madera",
+            "dormitorio"
+        ],
+        "image": "https://www.mobikids.es/images/187/p/187_369655_10_max.jpg",
+        "status": "AVAILABLE"
+    },
+    {
+        "name": "Lámpara de pie arco negra",
+        "description": "Metal negro mate, altura regulable y pantalla redonda. Queda bien en salón, incluye bombilla cálida.",
+        "price": 42,
+        "isSale": true,
+        "tags": [
+            "lampara",
+            "decoracion",
+            "salon"
+        ],
+        "image": "https://crimons.com/wp-content/uploads/product_348_contents_703_original.jpg",
+        "status": "AVAILABLE"
+    },
+    {
+        "name": "Espejo redondo marco dorado 70 cm",
+        "description": "Marco metálico dorado, diámetro de 70 cm. Tiene el cristal limpio y un arañazo leve en el borde inferior.",
+        "price": 55,
+        "isSale": true,
+        "tags": [
+            "espejo",
+            "decoracion",
+            "hogar"
+        ],
+        "image": "https://m.media-amazon.com/images/I/61nGNlTqi0L.jpg_BO30,255,255,255_UF750,750_SR1910,1000,0,C_QL100_.jpg",
+        "status": "AVAILABLE"
+    },
+    {
+        "name": "Alfombra lavable estilo bereber",
+        "description": "Medidas 160x230 cm, tonos crema y negro. Está lavada y tiene una zona algo más gastada bajo la mesa.",
+        "price": 48,
+        "isSale": true,
+        "tags": [
+            "alfombra",
+            "decoracion",
+            "salon"
+        ],
+        "image": "https://mobel6000.com/93253-ficha/lorena-canals-alfombra-bereber-beige.jpg",
+        "status": "AVAILABLE"
+    },
+    {
+        "name": "Set de tres jarrones de cerámica verde",
+        "description": "Tres tamaños distintos en cerámica esmaltada verde. Encajan en recibidor o estantería, sin golpes.",
+        "price": 24,
+        "isSale": true,
+        "tags": [
+            "jarrones",
+            "ceramica",
+            "decoracion"
+        ],
+        "image": "https://m.media-amazon.com/images/I/615uUHfBZ+L._AC_UF894,1000_QL80_.jpg",
+        "status": "AVAILABLE"
+    },
+    {
+        "name": "Chaqueta acolchada azul talla M",
+        "description": "Marca ficticia North Bay, tejido ligero y cremallera doble. Abriga bien para entretiempo, ajuste recto.",
+        "price": 36,
+        "isSale": true,
+        "tags": [
+            "moda",
+            "chaqueta",
+            "ropa"
+        ],
+        "image": "https://m.media-amazon.com/images/I/519OhKdhD-L._AC_UY1000_.jpg",
+        "status": "AVAILABLE"
+    },
+    {
+        "name": "Vestido midi verde talla S",
+        "description": "Tela fluida, manga corta y cintura marcada. Usado en dos ocasiones, ideal para primavera o evento sencillo.",
+        "price": 28,
+        "isSale": true,
+        "tags": [
+            "moda",
+            "vestido",
+            "ropa"
+        ],
+        "image": "https://quemono.com/wp-content/uploads/2024/02/vestido-mujer-midi-verde-botella-1200x900.jpg",
+        "status": "AVAILABLE"
+    },
+    {
+        "name": "Abrigo de paño camel talla L",
+        "description": "Corte clásico, forro interior y bolsillos profundos. Tiene una bolita en la manga que se quita con maquinilla.",
+        "price": 62,
+        "isSale": true,
+        "tags": [
+            "abrigo",
+            "moda",
+            "invierno"
+        ],
+        "image": "https://images.ecestaticos.com/Is8YchK7EReuhHqlzfWDazTz4J4=/0x0:2272x1704/1200x900/filters:fill(white):format(jpg)/f.elconfidencial.com%2Foriginal%2F32d%2F775%2Fd75%2F32d775d756b4e19af3450a5f31066e03.jpg",
+        "status": "AVAILABLE"
+    },
+    {
+        "name": "Pantalón vaquero recto talla 40",
+        "description": "Denim azul medio, tiro alto y pierna recta. Cede un poco con el uso y no tiene bajos deshilachados.",
+        "price": 18,
+        "isSale": true,
+        "tags": [
+            "vaquero",
+            "moda",
+            "ropa"
+        ],
+        "image": "https://i.etsystatic.com/8819469/r/il/dfa69c/7042722979/il_fullxfull.7042722979_cgrh.jpg",
+        "status": "AVAILABLE"
+    },
+    {
+        "name": "Camisa blanca de lino talla M",
+        "description": "Lino fresco, botones nacarados y corte holgado. Tiene una pequeña sombra en el cuello, apenas visible puesta.",
+        "price": 16,
+        "isSale": true,
+        "tags": [
+            "camisa",
+            "lino",
+            "moda"
+        ],
+        "image": "https://www.apposta.com/MTF/Content/guides/linenopengraph__8801076913795176138.jpg",
+        "status": "AVAILABLE"
+    },
+    {
+        "name": "Zapatillas urbanas blancas talla 38",
+        "description": "Suela entera, piel sintética blanca y interior cómodo. Tienen marcas normales en puntera y laterales.",
+        "price": 22,
+        "isSale": true,
+        "tags": [
+            "calzado",
+            "zapatillas",
+            "moda"
+        ],
+        "image": "https://m.media-amazon.com/images/I/71zXECIM9SL._AC_UY900_.jpg",
+        "status": "AVAILABLE"
+    },
+    {
+        "name": "Botines negros de piel talla 39",
+        "description": "Tacón bajo, suela antideslizante y piel flexible. Usados una temporada, con roce pequeño en el talón derecho.",
+        "price": 34,
+        "isSale": true,
+        "tags": [
+            "calzado",
+            "botines",
+            "piel"
+        ],
+        "image": "https://www.zapatoideal.com/6657/botin-mujer-piel-negro-cuna-cremallera.jpg",
+        "status": "AVAILABLE"
+    },
+    {
+        "name": "Sandalias planas de cuero talla 37",
+        "description": "Cuero marrón, hebilla ajustable y planta cómoda. La suela está algo oscurecida por uso de verano.",
+        "price": 14,
+        "isSale": true,
+        "tags": [
+            "sandalias",
+            "calzado",
+            "verano"
+        ],
+        "image": "https://avatarshoes.com/24509-large_default/raquel-perez-sandalia-plana-azuaga-cuero-mujer.jpg",
+        "status": "AVAILABLE"
+    },
+    {
+        "name": "Bicicleta de montaña 29 pulgadas talla M",
+        "description": "Frenos de disco, 21 cambios y suspensión delantera. Las ruedas están revisadas, conviene ajustar el cambio trasero.",
+        "price": 285,
+        "isSale": true,
+        "tags": [
+            "bicicleta",
+            "montana",
+            "deporte"
+        ],
+        "image": "https://mhw-bike.es/media/57/c1/72/1756888090/140200-Cube-Aim-Pro-slateblack-n-black-2026-Hardtail-Mountainbike-00.jpg?ts=1756888090",
+        "status": "AVAILABLE"
+    },
+    {
+        "name": "Bicicleta urbana plegable 20 pulgadas",
+        "description": "Cuadro aluminio, seis cambios y plegado rápido. Tiene cesta delantera y guardabarros, ideal para trayectos cortos.",
+        "price": 170,
+        "isSale": true,
+        "tags": [
+            "bicicleta",
+            "urbana",
+            "plegable"
+        ],
+        "image": "https://m.media-amazon.com/images/I/61AVUDxYNyL._AC_UF894,1000_QL80_.jpg",
+        "status": "AVAILABLE"
+    },
+    {
+        "name": "Rodillo de entrenamiento para bicicleta",
+        "description": "Compatible con ruedas de 26 a 29 pulgadas. Incluye eje adaptador y tiene resistencia regulable con mando.",
+        "price": 70,
+        "isSale": true,
+        "tags": [
+            "bicicleta",
+            "deporte",
+            "rodillo"
+        ],
+        "image": "https://m.media-amazon.com/images/I/61G7Dsi6SUL._AC_UF894,1000_QL80_.jpg",
+        "status": "AVAILABLE"
+    },
+    {
+        "name": "Mancuernas ajustables de 20 kg",
+        "description": "Pareja con discos metálicos, cierres de rosca y barra estriada. Algún punto de óxido superficial en un disco.",
+        "price": 58,
+        "isSale": true,
+        "tags": [
+            "deporte",
+            "mancuernas",
+            "fitness"
+        ],
+        "image": "https://m.media-amazon.com/images/I/51m0i-q2rlL._AC_UF894,1000_QL80_.jpg",
+        "status": "AVAILABLE"
+    },
+    {
+        "name": "Tabla de paddle surf hinchable 10 pies",
+        "description": "Incluye remo, bomba, quilla y mochila. Probada este verano, sin pinchazos y con marcas de arena en la base.",
+        "price": 210,
+        "isSale": true,
+        "tags": [
+            "deporte",
+            "paddle",
+            "playa"
+        ],
+        "image": "https://m.media-amazon.com/images/I/71ubZN6L0mL.jpg",
+        "status": "AVAILABLE"
+    },
+    {
+        "name": "Lote de novelas negras en tapa blanda",
+        "description": "Son 12 libros de misterio y crimen, ediciones de bolsillo. Algunas esquinas dobladas, páginas sin subrayar.",
+        "price": 30,
+        "isSale": true,
+        "tags": [
+            "libros",
+            "novela",
+            "lote"
+        ],
+        "image": "https://cloud10.todocoleccion.online/libros-novela-negra-policiaca/tc/2025/09/01/16/594362827_tcimg_40D957B0.jpg",
+        "status": "AVAILABLE"
+    },
+    {
+        "name": "Saga de fantasía juvenil cinco tomos",
+        "description": "Cinco libros en tapa blanda, lectura ligera de aventuras. El primer tomo tiene el lomo algo marcado.",
+        "price": 35,
+        "isSale": true,
+        "tags": [
+            "libros",
+            "fantasia",
+            "saga"
+        ],
+        "image": "https://static.fnac-static.com/multimedia/Images/ES/Comete/34134/CCP_IMG_ORIGINAL/477846.jpg",
+        "status": "AVAILABLE"
+    },
+    {
+        "name": "Manual de redes informáticas actualizado",
+        "description": "Tapa blanda, edición reciente y capítulos sobre TCP/IP, VLAN y seguridad. Tiene apuntes a lápiz en dos páginas.",
+        "price": 26,
+        "isSale": true,
+        "tags": [
+            "libros",
+            "informatica",
+            "redes"
+        ],
+        "image": "https://m.media-amazon.com/images/I/812SuiSPXqL.jpg_BO30,255,255,255_UF750,750_SR1910,1000,0,C_QL100_.jpg",
+        "status": "AVAILABLE"
+    },
+    {
+        "name": "Cuentos infantiles ilustrados lote de 8",
+        "description": "Ocho cuentos de tapa dura para 3 a 6 años. Portadas coloridas y páginas completas, con un nombre escrito en dos.",
+        "price": 18,
+        "isSale": true,
+        "tags": [
+            "libros",
+            "infantil",
+            "cuentos"
+        ],
+        "image": "https://www.editorialelpirata.com/wp-content/uploads/2021/06/Banner-packs.jpg",
+        "status": "AVAILABLE"
+    },
+    {
+        "name": "Pista de coches infantil con loop",
+        "description": "Para mayores de 4 años, incluye 3 coches y piezas de pista. La caja está algo vencida, el circuito monta bien.",
+        "price": 20,
+        "isSale": true,
+        "tags": [
+            "juguetes",
+            "coches",
+            "infantil"
+        ],
+        "image": "https://cdn2.juguetilandia.com/images/articulos/1999967898g01.jpg",
+        "status": "AVAILABLE"
+    },
+    {
+        "name": "Casa de muñecas de madera pequeña",
+        "description": "Tiene dos plantas, muebles básicos y colores suaves. Recomendable desde 3 años, con un desconchón en el tejado.",
+        "price": 42,
+        "isSale": true,
+        "tags": [
+            "juguetes",
+            "munecas",
+            "madera"
+        ],
+        "image": "https://juegoesencial.es/wp-content/uploads/2024/06/casa-de-munecas-portatil-rosa-little-dutch-6.webp",
+        "status": "AVAILABLE"
+    },
+    {
+        "name": "Puzzle de animales 1000 piezas",
+        "description": "Puzzle completo, revisado pieza a pieza. La caja tiene una esquina reparada con cinta, la imagen queda muy vistosa.",
+        "price": 9,
+        "isSale": true,
+        "tags": [
+            "puzzle",
+            "juguetes",
+            "ocio"
+        ],
+        "image": "https://m.media-amazon.com/images/I/71ReMWT7TdL.jpg",
+        "status": "AVAILABLE"
+    },
+    {
+        "name": "Trona plegable gris para bebé",
+        "description": "Arnés de seguridad, bandeja extraíble y plegado estrecho. Funda lavada, recomendada para cuando ya se sientan solos.",
+        "price": 38,
+        "isSale": true,
+        "tags": [
+            "bebe",
+            "trona",
+            "hogar"
+        ],
+        "image": "https://cdn.juguetilandia.com/images/articulos/1999963205g00.jpg",
+        "status": "AVAILABLE"
+    },
+    {
+        "name": "Carrito de bebé ligero color arena",
+        "description": "Plegado con una mano, capota amplia y cesta inferior. Incluye plástico de lluvia, ruedas con desgaste normal.",
+        "price": 120,
+        "isSale": true,
+        "tags": [
+            "bebe",
+            "carrito",
+            "paseo"
+        ],
+        "image": "https://i.ebayimg.com/images/g/5gMAAeSwn5donQGl/s-l1200.webp",
+        "status": "AVAILABLE"
+    },
+    {
+        "name": "Mochila portabebés ergonómica azul",
+        "description": "Ajuste lumbar, tirantes acolchados y tela lavable. Usada con bebé de 4 a 14 meses, sin manchas visibles.",
+        "price": 32,
+        "isSale": true,
+        "tags": [
+            "bebe",
+            "mochila",
+            "portabebes"
+        ],
+        "image": "https://picsum.photos/seed/mochila-portabebes-ergonomica-azul-050/800/600",
+        "status": "AVAILABLE"
+    },
+    {
+        "name": "Taladro percutor 750W con maletín",
+        "description": "Incluye maletín, empuñadura lateral y varias brocas para pared. Cable largo y selector de velocidad operativo.",
+        "price": 46,
+        "isSale": true,
+        "tags": [
+            "herramientas",
+            "taladro",
+            "bricolaje"
+        ],
+        "image": "https://picsum.photos/seed/taladro-percutor-750w-maletin-051/800/600",
+        "status": "AVAILABLE"
+    },
+    {
+        "name": "Atornillador eléctrico con dos baterías",
+        "description": "Viene con cargador, puntas y estuche rígido. Una batería dura menos que la otra, suficiente para montajes pequeños.",
+        "price": 39,
+        "isSale": true,
+        "tags": [
+            "herramientas",
+            "atornillador",
+            "bricolaje"
+        ],
+        "image": "https://picsum.photos/seed/atornillador-electrico-dos-baterias-052/800/600",
+        "status": "AVAILABLE"
+    },
+    {
+        "name": "Caja de herramientas metálica grande",
+        "description": "Tiene bandeja interior, cierres firmes y asa superior. Mide 50 cm, con arañazos por taller pero sin golpes fuertes.",
+        "price": 25,
+        "isSale": true,
+        "tags": [
+            "herramientas",
+            "caja",
+            "taller"
+        ],
+        "image": "https://picsum.photos/seed/caja-herramientas-metalica-grande-053/800/600",
+        "status": "AVAILABLE"
+    },
+    {
+        "name": "Sierra de calar 600W con hojas",
+        "description": "Incluye hojas para madera y guía lateral. Corta bien tableros finos, la base tiene marcas de apoyo.",
+        "price": 37,
+        "isSale": true,
+        "tags": [
+            "herramientas",
+            "sierra",
+            "bricolaje"
+        ],
+        "image": "https://picsum.photos/seed/sierra-calar-600w-hojas-054/800/600",
+        "status": "AVAILABLE"
+    },
+    {
+        "name": "Lavadora carga frontal 7 kg",
+        "description": "Tiene programas rápidos y centrifugado de 1200 rpm. Hace algo de ruido al final, pero lava bien y no pierde agua.",
+        "price": 135,
+        "isSale": true,
+        "tags": [
+            "lavadora",
+            "electrodomestico",
+            "hogar"
+        ],
+        "image": "https://picsum.photos/seed/lavadora-frontal-7kg-055/800/600",
+        "status": "AVAILABLE"
+    },
+    {
+        "name": "Microondas blanco 20 litros",
+        "description": "Potencia de 700W, plato giratorio y temporizador manual. Tiene una marca amarillenta junto al botón de apertura.",
+        "price": 32,
+        "isSale": true,
+        "tags": [
+            "microondas",
+            "cocina",
+            "electrodomestico"
+        ],
+        "image": "https://picsum.photos/seed/microondas-blanco-20-litros-056/800/600",
+        "status": "AVAILABLE"
+    },
+    {
+        "name": "Aspirador sin cable ciclónico",
+        "description": "Incluye soporte de pared, cepillo estrecho y cargador. La batería dura unos 25 minutos en potencia normal.",
+        "price": 85,
+        "isSale": true,
+        "tags": [
+            "aspirador",
+            "hogar",
+            "limpieza"
+        ],
+        "image": "https://picsum.photos/seed/aspirador-sin-cable-ciclonico-057/800/600",
+        "status": "AVAILABLE"
+    },
+    {
+        "name": "Cafetera espresso compacta plateada",
+        "description": "Depósito de 1 litro, vaporizador lateral y bandeja extraíble. Tarda un poco en calentar, pero saca buen café.",
+        "price": 68,
+        "isSale": true,
+        "tags": [
+            "cafetera",
+            "cocina",
+            "electrodomestico"
+        ],
+        "image": "https://picsum.photos/seed/cafetera-espresso-compacta-058/800/600",
+        "status": "AVAILABLE"
+    },
+    {
+        "name": "Guitarra acústica natural con funda",
+        "description": "Cuerpo tipo dreadnought, cuerdas cambiadas hace poco y funda blanda. Tiene marcas de púa bajo la boca.",
+        "price": 95,
+        "isSale": true,
+        "tags": [
+            "guitarra",
+            "musica",
+            "instrumento"
+        ],
+        "image": "https://picsum.photos/seed/guitarra-acustica-natural-funda-059/800/600",
+        "status": "AVAILABLE"
+    },
+    {
+        "name": "Teclado musical 61 teclas con soporte",
+        "description": "Incluye soporte, adaptador de corriente y atril. Varias voces y ritmos, dos teclas tienen respuesta algo más dura.",
+        "price": 115,
+        "isSale": true,
+        "tags": [
+            "teclado",
+            "musica",
+            "instrumento"
+        ],
+        "image": "https://picsum.photos/seed/teclado-musical-61-teclas-060/800/600",
+        "status": "AVAILABLE"
+    },
+    {
+        "name": "Ukelele soprano caoba con afinador",
+        "description": "Madera laminada, funda negra y afinador de pinza. Mantiene la afinación bien después de ajustar las cuerdas.",
+        "price": 35,
+        "isSale": true,
+        "tags": [
+            "ukelele",
+            "musica",
+            "instrumento"
+        ],
+        "image": "https://picsum.photos/seed/ukelele-soprano-caoba-afinador-061/800/600",
+        "status": "AVAILABLE"
+    },
+    {
+        "name": "Cámara Canon EOS 2000D con objetivo",
+        "description": "Incluye lente 18-55, batería, cargador y correa. Sensor limpio y pantalla trasera con protector marcado.",
+        "price": 310,
+        "isSale": true,
+        "tags": [
+            "camara",
+            "fotografia",
+            "canon"
+        ],
+        "image": "https://picsum.photos/seed/canon-eos-2000d-objetivo-062/800/600",
+        "status": "AVAILABLE"
+    },
+    {
+        "name": "Objetivo 50mm luminoso para Sony E",
+        "description": "Lente fija con tapas delantera y trasera. Cristal sin hongos ni rayas, enfoque manual suave.",
+        "price": 140,
+        "isSale": true,
+        "tags": [
+            "objetivo",
+            "fotografia",
+            "sony"
+        ],
+        "image": "https://picsum.photos/seed/objetivo-50mm-sony-e-063/800/600",
+        "status": "AVAILABLE"
+    },
+    {
+        "name": "Trípode de aluminio con rótula",
+        "description": "Altura máxima 150 cm, patas extensibles y bolsa de transporte. Una pestaña está reparada, bloquea bien.",
+        "price": 24,
+        "isSale": true,
+        "tags": [
+            "tripode",
+            "fotografia",
+            "camara"
+        ],
+        "image": "https://picsum.photos/seed/tripode-aluminio-rotula-064/800/600",
+        "status": "AVAILABLE"
+    },
+    {
+        "name": "Macetero alto de fibra para terraza",
+        "description": "Mide 80 cm, color antracita y apto para exterior. Tiene drenaje hecho y marcas leves de sol en un lateral.",
+        "price": 30,
+        "isSale": true,
+        "tags": [
+            "jardin",
+            "macetero",
+            "terraza"
+        ],
+        "image": "https://picsum.photos/seed/macetero-alto-fibra-terraza-065/800/600",
+        "status": "AVAILABLE"
+    },
+    {
+        "name": "Mesa plegable de jardín verde",
+        "description": "Estructura metálica, tablero de resina y medidas 120x70 cm. Se pliega plana, con un arañazo en la superficie.",
+        "price": 40,
+        "isSale": true,
+        "tags": [
+            "jardin",
+            "mesa",
+            "exterior"
+        ],
+        "image": "https://picsum.photos/seed/mesa-plegable-jardin-verde-066/800/600",
+        "status": "AVAILABLE"
+    },
+    {
+        "name": "Kit de riego por goteo para balcón",
+        "description": "Incluye tubo, goteros y programador sencillo. Usado una temporada con 10 macetas, falta una pieza en T.",
+        "price": 18,
+        "isSale": true,
+        "tags": [
+            "jardin",
+            "riego",
+            "balcon"
+        ],
+        "image": "https://picsum.photos/seed/kit-riego-goteo-balcon-067/800/600",
+        "status": "AVAILABLE"
+    },
+    {
+        "name": "Cama para perro mediano gris",
+        "description": "Funda lavable, base antideslizante y relleno mullido. Medidas 75x55 cm, usada por perro pequeño.",
+        "price": 22,
+        "isSale": true,
+        "tags": [
+            "mascotas",
+            "perro",
+            "cama"
+        ],
+        "image": "https://picsum.photos/seed/cama-perro-mediano-gris-068/800/600",
+        "status": "AVAILABLE"
+    },
+    {
+        "name": "Transportín rígido para gato",
+        "description": "Plástico resistente, puerta metálica y ventilación lateral. Limpio y listo para viajes cortos o veterinario.",
+        "price": 19,
+        "isSale": true,
+        "tags": [
+            "mascotas",
+            "gato",
+            "transportin"
+        ],
+        "image": "https://picsum.photos/seed/transportin-rigido-gato-069/800/600",
+        "status": "AVAILABLE"
+    },
+    {
+        "name": "Rascador de gato con plataforma",
+        "description": "Altura 90 cm, cuerda de sisal y cama superior. La base está firme, la cuerda inferior tiene desgaste.",
+        "price": 28,
+        "isSale": true,
+        "tags": [
+            "mascotas",
+            "gato",
+            "rascador"
+        ],
+        "image": "https://picsum.photos/seed/rascador-gato-plataforma-070/800/600",
+        "status": "AVAILABLE"
+    },
+    {
+        "name": "Silla de oficina ergonómica negra",
+        "description": "Respaldo de malla, reposabrazos regulables y ruedas suaves. El pistón baja un poco tras varias horas sentado.",
+        "price": 82,
+        "isSale": true,
+        "tags": [
+            "oficina",
+            "silla",
+            "ergonomia"
+        ],
+        "image": "https://picsum.photos/seed/silla-oficina-ergonomica-negra-071/800/600",
+        "status": "AVAILABLE"
+    },
+    {
+        "name": "Escritorio blanco con dos cajones",
+        "description": "Mide 120x60 cm, tablero blanco y cajones laterales. Tiene marcas de monitor en la superficie, se desmonta fácil.",
+        "price": 60,
+        "isSale": true,
+        "tags": [
+            "oficina",
+            "escritorio",
+            "mueble"
+        ],
+        "image": "https://picsum.photos/seed/escritorio-blanco-dos-cajones-072/800/600",
+        "status": "AVAILABLE"
+    },
+    {
+        "name": "Flexo LED con brazo articulado",
+        "description": "Luz regulable en tres tonos, pinza de mesa y brazo metálico. Perfecto para estudiar sin ocupar mucho espacio.",
+        "price": 17,
+        "isSale": true,
+        "tags": [
+            "oficina",
+            "flexo",
+            "estudio"
+        ],
+        "image": "https://picsum.photos/seed/flexo-led-brazo-articulado-073/800/600",
+        "status": "AVAILABLE"
+    },
+    {
+        "name": "Archivador metálico de tres cajones",
+        "description": "Color gris, ruedas y cajón inferior para carpetas colgantes. No tengo la llave, pero los cajones abren bien.",
+        "price": 35,
+        "isSale": true,
+        "tags": [
+            "oficina",
+            "archivador",
+            "almacenaje"
+        ],
+        "image": "https://picsum.photos/seed/archivador-metalico-tres-cajones-074/800/600",
+        "status": "AVAILABLE"
+    },
+    {
+        "name": "Figura coleccionable de robot retro",
+        "description": "Edición de 2012 aproximadamente, con caja original algo rozada. La figura conserva articulaciones firmes.",
+        "price": 45,
+        "isSale": true,
+        "tags": [
+            "coleccionismo",
+            "figura",
+            "retro"
+        ],
+        "image": "https://picsum.photos/seed/figura-robot-retro-coleccion-075/800/600",
+        "status": "AVAILABLE"
+    },
+    {
+        "name": "Lote de cromos de fútbol años 90",
+        "description": "Unas 120 unidades variadas, sin álbum. Hay repetidos y algunos bordes gastados, ideal para completar colección.",
+        "price": 29,
+        "isSale": true,
+        "tags": [
+            "coleccionismo",
+            "cromos",
+            "futbol"
+        ],
+        "image": "https://picsum.photos/seed/lote-cromos-futbol-anos90-076/800/600",
+        "status": "AVAILABLE"
+    },
+    {
+        "name": "Vinilo edición limitada rock alternativo",
+        "description": "Prensado transparente, funda interior incluida y disco escuchado pocas veces. La portada tiene una esquina tocada.",
+        "price": 48,
+        "isSale": true,
+        "tags": [
+            "coleccionismo",
+            "vinilo",
+            "musica"
+        ],
+        "image": "https://picsum.photos/seed/vinilo-edicion-limitada-rock-077/800/600",
+        "status": "AVAILABLE"
+    },
+    {
+        "name": "Radio portátil vintage color crema",
+        "description": "Sintoniza FM, funciona con pilas o cable y tiene antena extensible. El dial hace un pequeño crujido al girar.",
+        "price": 33,
+        "isSale": true,
+        "tags": [
+            "electronica",
+            "radio",
+            "vintage"
+        ],
+        "image": "https://picsum.photos/seed/radio-portatil-vintage-crema-078/800/600",
+        "status": "AVAILABLE"
+    },
+    {
+        "name": "Auriculares inalámbricos negros con estuche",
+        "description": "Estuche de carga USB-C, almohadillas de repuesto y autonomía correcta. El derecho tiene una marca en la carcasa.",
+        "price": 27,
+        "isSale": true,
+        "tags": [
+            "electronica",
+            "auriculares",
+            "audio"
+        ],
+        "image": "https://picsum.photos/seed/auriculares-inalambricos-negros-079/800/600",
+        "status": "AVAILABLE"
+    },
+    {
+        "name": "Altavoz Bluetooth resistente al agua",
+        "description": "Sonido potente para habitación o terraza, carga por USB-C y correa lateral. La goma de un botón está algo blanda.",
+        "price": 44,
+        "isSale": true,
+        "tags": [
+            "electronica",
+            "altavoz",
+            "audio"
+        ],
+        "image": "https://picsum.photos/seed/altavoz-bluetooth-resistente-agua-080/800/600",
+        "status": "AVAILABLE"
+    },
+    {
+        "name": "iPhone 13 azul 128GB con caja",
+        "description": "Batería al 88%, pantalla sin roturas y se entrega con caja y cable. Tiene una marca fina junto al módulo de cámara.",
+        "price": 420,
+        "isSale": true,
+        "tags": [
+            "movil",
+            "iphone",
+            "apple"
+        ],
+        "image": "https://picsum.photos/seed/iphone-13-azul-128gb-caja-081/800/600",
+        "status": "RESERVED"
+    },
+    {
+        "name": "Portátil Acer Swift ligero 14 pulgadas",
+        "description": "Tiene 8GB de RAM, SSD de 256GB y cargador original. La batería aguanta bien varias clases y el teclado está cuidado.",
+        "price": 300,
+        "isSale": true,
+        "tags": [
+            "portatil",
+            "acer",
+            "estudio"
+        ],
+        "image": "https://picsum.photos/seed/portatil-acer-swift-ligero-082/800/600",
+        "status": "RESERVED"
+    },
+    {
+        "name": "Nintendo 2DS azul con cargador",
+        "description": "Pantallas sin rayas profundas, lápiz incluido y cargador compatible. Tiene pegatinas en la carcasa exterior.",
+        "price": 78,
+        "isSale": true,
+        "tags": [
+            "consola",
+            "nintendo",
+            "retro"
+        ],
+        "image": "https://picsum.photos/seed/nintendo-2ds-azul-cargador-083/800/600",
+        "status": "RESERVED"
+    },
+    {
+        "name": "Sillón individual verde oliva",
+        "description": "Tapizado suave, patas de madera y asiento ancho. Mide 82 cm de fondo, con una pequeña mancha en el brazo izquierdo.",
+        "price": 90,
+        "isSale": true,
+        "tags": [
+            "sillon",
+            "mueble",
+            "salon"
+        ],
+        "image": "https://picsum.photos/seed/sillon-individual-verde-oliva-084/800/600",
+        "status": "RESERVED"
+    },
+    {
+        "name": "Lote de ropa bebé 6 a 9 meses",
+        "description": "Incluye bodies, pantalones y dos chaquetas finas. Todo lavado, algunas prendas tienen bolitas por el roce.",
+        "price": 25,
+        "isSale": true,
+        "tags": [
+            "bebe",
+            "ropa",
+            "lote"
+        ],
+        "image": "https://picsum.photos/seed/lote-ropa-bebe-6-9-meses-085/800/600",
+        "status": "RESERVED"
+    },
+    {
+        "name": "Bicicleta infantil roja 16 pulgadas",
+        "description": "Ruedines incluidos, freno trasero y sillín regulable. Tiene arañazos de aprender, las ruedas están hinchadas.",
+        "price": 55,
+        "isSale": true,
+        "tags": [
+            "bicicleta",
+            "infantil",
+            "deporte"
+        ],
+        "image": "https://picsum.photos/seed/bicicleta-infantil-roja-16-086/800/600",
+        "status": "RESERVED"
+    },
+    {
+        "name": "Freidora de aire 5 litros negra",
+        "description": "Cesta amplia, varios programas y temporizador digital. La bandeja tiene marcas normales de uso, cocina sin olores raros.",
+        "price": 58,
+        "isSale": true,
+        "tags": [
+            "freidora",
+            "cocina",
+            "electrodomestico"
+        ],
+        "image": "https://picsum.photos/seed/freidora-aire-5-litros-negra-087/800/600",
+        "status": "RESERVED"
+    },
+    {
+        "name": "Bajo eléctrico negro con correa",
+        "description": "Cuatro cuerdas, funda básica y correa incluida. Necesita afinación y quizá cambio de cuerdas por llevar tiempo parado.",
+        "price": 130,
+        "isSale": true,
+        "tags": [
+            "bajo",
+            "musica",
+            "instrumento"
+        ],
+        "image": "https://picsum.photos/seed/bajo-electrico-negro-correa-088/800/600",
+        "status": "RESERVED"
+    },
+    {
+        "name": "Objetivo gran angular para Nikon",
+        "description": "Lente para paisaje con tapas delantera y trasera. Cristales limpios, sin hongos, y enfoque suave aunque no conserva la caja.",
+        "price": 180,
+        "isSale": true,
+        "tags": [
+            "fotografia",
+            "objetivo",
+            "nikon"
+        ],
+        "image": "https://picsum.photos/seed/objetivo-gran-angular-nikon-089/800/600",
+        "status": "RESERVED"
+    },
+    {
+        "name": "Banco de jardín de madera plegable",
+        "description": "Para exterior cubierto, dos plazas y madera tratada. Tiene el barniz algo gastado, pero la estructura está firme.",
+        "price": 52,
+        "isSale": true,
+        "tags": [
+            "jardin",
+            "banco",
+            "exterior"
+        ],
+        "image": "https://picsum.photos/seed/banco-jardin-madera-plegable-090/800/600",
+        "status": "RESERVED"
+    },
+    {
+        "name": "Acuario de 60 litros con filtro",
+        "description": "Incluye filtro interno, tapa con luz y grava clara. Tiene una raya superficial en el cristal delantero.",
+        "price": 49,
+        "isSale": true,
+        "tags": [
+            "mascotas",
+            "acuario",
+            "peces"
+        ],
+        "image": "https://picsum.photos/seed/acuario-60-litros-filtro-091/800/600",
+        "status": "RESERVED"
+    },
+    {
+        "name": "Silla de escritorio gris con ruedas",
+        "description": "Respaldo cómodo, altura regulable y ruedas que giran suaves. El tapizado tiene una zona algo gastada en el asiento.",
+        "price": 70,
+        "isSale": true,
+        "tags": [
+            "oficina",
+            "silla",
+            "escritorio"
+        ],
+        "image": "https://picsum.photos/seed/silla-escritorio-gris-ruedas-092/800/600",
+        "status": "RESERVED"
+    },
+    {
+        "name": "Huawei P30 Lite blanco 128GB",
+        "description": "Pantalla cuidada, cámara correcta y batería para uso moderado. Incluye cargador, la tapa trasera tiene microarañazos.",
+        "price": 92,
+        "isSale": true,
+        "tags": [
+            "movil",
+            "huawei",
+            "android"
+        ],
+        "image": "https://picsum.photos/seed/huawei-p30-lite-blanco-093/800/600",
+        "status": "SOLD"
+    },
+    {
+        "name": "Portátil HP 14 pulgadas i3",
+        "description": "8GB de RAM, SSD de 256GB y cargador incluido. Teclado español, batería justa para estar lejos del enchufe.",
+        "price": 210,
+        "isSale": true,
+        "tags": [
+            "portatil",
+            "hp",
+            "informatica"
+        ],
+        "image": "https://picsum.photos/seed/portatil-hp-14-i3-094/800/600",
+        "status": "SOLD"
+    },
+    {
+        "name": "Tablet Huawei MediaPad 10 pulgadas",
+        "description": "32GB, funda roja y pantalla sin golpes. Va bien para vídeos y lectura, el cargador no es el original.",
+        "price": 74,
+        "isSale": true,
+        "tags": [
+            "tablet",
+            "huawei",
+            "android"
+        ],
+        "image": "https://picsum.photos/seed/tablet-huawei-mediapad-10-095/800/600",
+        "status": "SOLD"
+    },
+    {
+        "name": "Lote de mandos retro USB",
+        "description": "Cuatro mandos con cable para emuladores, probados en PC. Uno tiene el botón select algo más duro.",
+        "price": 21,
+        "isSale": true,
+        "tags": [
+            "videojuegos",
+            "mandos",
+            "retro"
+        ],
+        "image": "https://picsum.photos/seed/lote-mandos-retro-usb-096/800/600",
+        "status": "SOLD"
+    },
+    {
+        "name": "Mesa auxiliar redonda de mármol sintético",
+        "description": "Sobre blanco veteado, patas negras y diámetro de 45 cm. Encaja junto al sofá, con un roce pequeño en una pata.",
+        "price": 39,
+        "isSale": true,
+        "tags": [
+            "mesa",
+            "decoracion",
+            "hogar"
+        ],
+        "image": "https://picsum.photos/seed/mesa-auxiliar-marmol-sintetico-097/800/600",
+        "status": "SOLD"
+    },
+    {
+        "name": "Botas de senderismo marrones talla 42",
+        "description": "Suela con buen dibujo, material impermeable y tobillo acolchado. Usadas en tres rutas, con barro seco en la lengüeta.",
+        "price": 41,
+        "isSale": true,
+        "tags": [
+            "calzado",
+            "senderismo",
+            "deporte"
+        ],
+        "image": "https://picsum.photos/seed/botas-senderismo-marrones-42-098/800/600",
+        "status": "SOLD"
+    },
+    {
+        "name": "Lijadora orbital 300W con discos",
+        "description": "Incluye bolsa de polvo y varios discos de grano distinto. Vibra normal y el cable está sin cortes.",
+        "price": 31,
+        "isSale": true,
+        "tags": [
+            "herramientas",
+            "lijadora",
+            "bricolaje"
+        ],
+        "image": "https://picsum.photos/seed/lijadora-orbital-300w-discos-099/800/600",
+        "status": "SOLD"
+    },
+    {
+        "name": "Máquina de coser portátil blanca",
+        "description": "Tiene pedal, luz integrada y varias puntadas básicas. Incluye canillas y funda blanda, ideal para arreglos pequeños.",
+        "price": 86,
+        "isSale": true,
+        "tags": [
+            "costura",
+            "hogar",
+            "electrodomestico"
+        ],
+        "image": "https://picsum.photos/seed/maquina-coser-portatil-blanca-100/800/600",
+        "status": "SOLD"
+    }
+]
