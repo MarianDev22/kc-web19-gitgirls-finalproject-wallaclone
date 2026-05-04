@@ -5,7 +5,7 @@ class EmailService {
   private MAILTRAP_USERNAME = process.env.MAIL_USER;
   private MAILTRAP_PASSWORD = process.env.MAIL_PASSWORD;
   private MAILTRAP_HOST = process.env.MAIL_HOST;
-  private MAILTRAP_PORT = process.env.MAILTRAP_PORT;
+  private MAILTRAP_PORT = process.env.MAIL_PORT;
   private MAILTRAP_FROM = process.env.MAIL_FROM;
 
   constructor() {
