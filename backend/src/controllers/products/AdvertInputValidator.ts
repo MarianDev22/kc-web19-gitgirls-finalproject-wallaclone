@@ -54,6 +54,7 @@ export const getAdvertsQueryValidator = z
     path: ['minPrice'],
   });
 
+export const updateAdValidator = createAdBodyValidator.partial();
 export const mongoIdValidator = z.object({
   id: mongoIdSchema,
 });
