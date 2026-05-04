@@ -16,6 +16,15 @@ export type Advert = {
     };
 };
 
+export type CreateAdvertPayload = {
+    name: string;
+    description: string;
+    price: number;
+    isSale: boolean;
+    image: string;
+    tags: string[];
+};
+
 type GetAdvertsResponse = {
     content: Advert[];
     total: number;
@@ -45,6 +54,33 @@ export async function getAdvertById(advertId: string): Promise<Advert> {
     if (!response.ok) {
         throw new Error(
             data?.message ?? data?.error ?? "No se ha podido cargar el anuncio",
+        );
+    }
+
+    return data;
+}
+
+export async function createAdvert(advertData: CreateAdvertPayload): Promise<Advert> {
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+        throw new Error("No se ha podido validar la sesión");
+    }
+
+    const response = await fetch(`${API_BASE_URL}/adverts`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(advertData),
+    });
+
+    const data = await response.json().catch(() => null);
+
+    if (!response.ok) {
+        throw new Error(
+            data?.message ?? data?.error ?? "No se ha podido crear el anuncio",
         );
     }
 
