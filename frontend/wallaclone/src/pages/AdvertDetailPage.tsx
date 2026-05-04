@@ -1,6 +1,16 @@
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { getAdvertById, type Advert } from "../services/advertService";
+import { deleteAdvert } from "../services/deleteAdvertService";
+
+type StoredUser = {
+    id?: string;
+    _id?: string;
+    user?: {
+        id?: string;
+        _id?: string;
+    };
+};
 
 function getAdvertStatusLabel(status: Advert["status"]) {
     const statusLabels = {
@@ -16,8 +26,37 @@ function getOwnerName(owner?: Advert["owner"]) {
     return owner?.username ?? "Usuario";
 }
 
+function getCurrentUserId() {
+    const storageKeys = ["user", "currentUser"];
+
+    for (const storageKey of storageKeys) {
+        const storedUser = localStorage.getItem(storageKey);
+
+        if (!storedUser) {
+            continue;
+        }
+
+        try {
+            const parsedUser = JSON.parse(storedUser) as StoredUser;
+
+            return (
+                parsedUser.id ??
+                parsedUser._id ??
+                parsedUser.user?.id ??
+                parsedUser.user?._id ??
+                null
+            );
+        } catch {
+            return null;
+        }
+    }
+
+    return null;
+}
+
 function AdvertDetailPage() {
     const { advertId } = useParams();
+    const navigate = useNavigate();
     const [advert, setAdvert] = useState<Advert | null>(null);
     const [isLoading, setIsLoading] = useState(true);
     const [errorMessage, setErrorMessage] = useState("");
@@ -72,6 +111,36 @@ function AdvertDetailPage() {
                 </div>
             </section>
         );
+    }
+
+    const currentUserId = getCurrentUserId();
+    const canManageAdvert = Boolean(currentUserId && currentUserId === advert.ownerId);
+
+    async function handleDeleteAdvert() {
+        if (!advert) {
+            return;
+        }
+
+        const advertToDelete = advert;
+
+        const confirmed = window.confirm(
+            `¿Seguro que quieres eliminar el anuncio "${advertToDelete.name}"?`,
+        );
+
+        if (!confirmed) {
+            return;
+        }
+
+        try {
+            await deleteAdvert(advertToDelete.id);
+            navigate("/", { replace: true });
+        } catch (error) {
+            setErrorMessage(
+                error instanceof Error
+                    ? error.message
+                    : "No se ha podido eliminar el anuncio",
+            );
+        }
     }
 
     return (
@@ -158,6 +227,26 @@ function AdvertDetailPage() {
                                             </span>
                                         ))}
                                     </div>
+                                </div>
+                            )}
+
+                            {canManageAdvert && (
+                                <div className="flex flex-wrap gap-3 border-t border-gray-100 pt-6">
+                                    <Link
+                                        to={`/adverts/${advert.id}/edit`}
+                                        state={{ advert }}
+                                        className="rounded-md bg-[#00bba7] px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-[#009689]"
+                                    >
+                                        Editar anuncio
+                                    </Link>
+
+                                    <button
+                                        type="button"
+                                        onClick={handleDeleteAdvert}
+                                        className="rounded-md border border-red-500 px-4 py-2 text-sm font-semibold text-red-600 transition-colors hover:bg-red-500 hover:text-white"
+                                    >
+                                        Eliminar anuncio
+                                    </button>
                                 </div>
                             )}
                         </div>
