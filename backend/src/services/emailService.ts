@@ -1,20 +1,25 @@
-import nodemailer from 'nodemailer';
+import nodemailer, { type Transporter } from 'nodemailer';
+
+type SendContactEmailParams = {
+  sellerEmail: string;
+  buyerEmail: string;
+  buyerUsername: string;
+  advertName: string;
+  message: string;
+  advertLink: string;
+};
 
 class EmailService {
-  private transporter;
-  private mailHost = process.env.MAIL_HOST;
-  private mailPort = process.env.MAIL_PORT;
-  private mailUser = process.env.MAIL_USER;
-  private mailPassword = process.env.MAIL_PASSWORD;
-  private mailFrom = process.env.MAIL_FROM;
+  private transporter: Transporter;
+  private mailFrom = process.env.MAIL_FROM ?? 'no-reply@wallaclone.local';
 
   constructor() {
     this.transporter = nodemailer.createTransport({
-      host: this.MAILTRAP_HOST,
-      port: Number(this.MAILTRAP_PORT),
+      host: process.env.MAIL_HOST,
+      port: Number(process.env.MAIL_PORT ?? 587),
       auth: {
-        user: this.MAILTRAP_USERNAME,
-        pass: this.MAILTRAP_PASSWORD,
+        user: process.env.MAIL_USER,
+        pass: process.env.MAIL_PASSWORD,
       },
     });
   }
@@ -25,28 +30,22 @@ class EmailService {
     buyerUsername,
     advertName,
     message,
-    advertLink
-  }: {
-    sellerEmail: string;
-    buyerEmail: string;
-    buyerUsername: string;
-    advertName: string;
-    message: string;
-    advertLink:string
-  }): Promise<void> {
+    advertLink,
+  }: SendContactEmailParams): Promise<void> {
     await this.transporter.sendMail({
-      from: `"${buyerUsername} a través de Wallaclone-GitGirls" <${this.MAILTRAP_FROM}>`,
+      from: `"${buyerUsername} a través de Wallaclone-GitGirls" <${this.mailFrom}>`,
       to: sellerEmail,
       subject: `Alguien se ha interesado en tu anuncio: ${advertName}`,
       text: message,
       html: `
-      <h3>Has recibido un nuevo mensaje</h3> 
-      <p><strong>Usuario:</strong> ${buyerUsername}</p>
-      <p><strong>Anuncio:</strong> ${advertName}</p>
-      <p><strong>Mensaje:</strong></p>
-      <p>${message}</p>
-      <p><strong>Ver anuncio:</strong>${advertLink}</p>
-      <h4><i>Para contactar con el comprador responde directamente a este correo.</h4></i>`,
+        <h3>Has recibido un nuevo mensaje</h3>
+        <p><strong>Usuario:</strong> ${buyerUsername}</p>
+        <p><strong>Anuncio:</strong> ${advertName}</p>
+        <p><strong>Mensaje:</strong></p>
+        <p>${message}</p>
+        <p><strong>Ver anuncio:</strong> ${advertLink}</p>
+        <h4><i>Para contactar con el comprador responde directamente a este correo.</i></h4>
+      `,
       replyTo: buyerEmail,
     });
   }

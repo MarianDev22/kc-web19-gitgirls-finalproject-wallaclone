@@ -13,35 +13,35 @@ export const contactSeller = async (advertId: string, buyerId: string, message: 
   const advert = await Advert.findById(advertId)
     .populate<{ ownerId: PopulatedOwner }>('ownerId', 'email')
     .lean();
+
   if (!advert || advert.status === 'SOLD') {
     throw new EntityNotFoundError('anuncio', advertId);
   }
+
   if (!advert.ownerId) {
     throw new EntityNotFoundError('vendedor', 'id_no_disponible');
   }
-  const sellerEmail = advert.ownerId.email;
-  const advertName = advert.name;
 
   const advertOwnerId = advert.ownerId._id.toString();
+
   if (advertOwnerId === buyerId) {
     throw new ForbiddenOperationError('No puedes contactar con tu propio anuncio');
   }
 
   const buyer = await User.findById(buyerId).select('email username -_id').lean();
+
   if (!buyer) {
     throw new EntityNotFoundError('usuario', buyerId);
   }
-  const { email: buyerEmail, username: buyerUsername } = buyer;
 
   const advertLink = `${process.env.CORS_ORIGIN}/adverts/${advertId}`;
 
   await emailService.sendContactEmail({
-    sellerEmail,
-    buyerEmail,
-    buyerUsername,
-    advertName,
+    sellerEmail: advert.ownerId.email,
+    buyerEmail: buyer.email,
+    buyerUsername: buyer.username,
+    advertName: advert.name,
     message,
-    advertLink
+    advertLink,
   });
-  return;
 };
