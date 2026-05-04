@@ -2,11 +2,11 @@ import nodemailer from 'nodemailer';
 
 class EmailService {
   private transporter;
-  private MAILTRAP_USERNAME = process.env.MAIL_USER;
-  private MAILTRAP_PASSWORD = process.env.MAIL_PASSWORD;
-  private MAILTRAP_HOST = process.env.MAIL_HOST;
-  private MAILTRAP_PORT = process.env.MAIL_PORT;
-  private MAILTRAP_FROM = process.env.MAIL_FROM;
+  private mailHost = process.env.MAIL_HOST;
+  private mailPort = process.env.MAIL_PORT;
+  private mailUser = process.env.MAIL_USER;
+  private mailPassword = process.env.MAIL_PASSWORD;
+  private mailFrom = process.env.MAIL_FROM;
 
   constructor() {
     this.transporter = nodemailer.createTransport({
