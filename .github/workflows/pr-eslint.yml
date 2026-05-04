@@ -1,0 +1,68 @@
+name: Pull Request ESLint
+
+on:
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+  pull-requests: write
+  checks: write
+
+jobs:
+  backend-eslint:
+    name: Backend ESLint
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: backend/package-lock.json
+
+      - name: Install backend dependencies
+        working-directory: backend
+        run: npm ci
+
+      - name: Run backend ESLint with reviewdog
+        uses: reviewdog/action-eslint@v1.34.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          reporter: github-check
+          workdir: backend
+          eslint_flags: "src --ext .ts"
+          fail_level: error
+
+  frontend-eslint:
+    name: Frontend ESLint
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: frontend/wallaclone/package-lock.json
+
+      - name: Install frontend dependencies
+        working-directory: frontend/wallaclone
+        run: npm ci
+
+      - name: Run frontend ESLint with reviewdog
+        uses: reviewdog/action-eslint@v1.34.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          reporter: github-check
+          workdir: frontend/wallaclone
+          eslint_flags: "."
+          fail_level: error

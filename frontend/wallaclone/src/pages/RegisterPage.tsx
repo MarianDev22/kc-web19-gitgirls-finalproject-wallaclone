@@ -1,9 +1,18 @@
-import { useState, type ChangeEvent, type SyntheticEvent } from "react";
-import { Link } from "react-router-dom";
+import { useState, useEffect, type ChangeEvent, type SyntheticEvent } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import Footer from "../components/layout/Footer";
 import { registerUser } from "../services/authService";
 
 export default function RegisterPage() {
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        const token = localStorage.getItem("token");
+        if (token) {
+            navigate("/", { replace: true });
+        }
+    }, [navigate]);
+
     const [formData, setFormData] = useState({
         username: "",
         email: "",
