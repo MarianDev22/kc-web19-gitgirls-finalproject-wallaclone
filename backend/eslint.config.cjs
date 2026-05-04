@@ -30,7 +30,17 @@ module.exports = [
       },
     },
     rules: {
-      '@typescript-eslint/no-unused-vars': ['warn'],
+      'no-unused-vars': 'off',
+      'no-use-before-define': 'off',
+
+      '@typescript-eslint/no-unused-vars': [
+        'warn',
+        {
+          argsIgnorePattern: '^_',
+          varsIgnorePattern: '^_',
+          caughtErrorsIgnorePattern: '^_',
+        },
+      ],
       '@typescript-eslint/no-use-before-define': 'error',
       '@typescript-eslint/explicit-function-return-type': 'off',
 
@@ -41,8 +51,6 @@ module.exports = [
 
       quotes: ['error', 'single', { avoidEscape: true }],
       semi: ['error', 'always'],
-      'no-unused-vars': 'off',
-      'no-use-before-define': 'off',
     },
   },
   prettierConfig,

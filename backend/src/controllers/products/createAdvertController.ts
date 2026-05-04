@@ -1,15 +1,17 @@
-import { Request, Response, NextFunction } from 'express';
-import { createAdBodyValidator } from './AdvertInputValidator';
-import { Advert } from '../../models/Advert';
+import type { RequestHandler } from 'express';
 import { UnauthorizedError } from '../../errors/domainError';
+import { Advert } from '../../models/Advert';
+import { createAdBodyValidator } from './AdvertInputValidator';
+import { mapAdvertToResponse } from './advertResponseMapper';
 
-export const createAdvertController = async (req: Request, res: Response, next: NextFunction) => {
+export const createAdvertController: RequestHandler = async (req, res, next) => {
   try {
     if (!req.user) {
       throw new UnauthorizedError('Usuario no autenticado');
     }
+
     const { name, description, price, isSale, image, tags } = createAdBodyValidator.parse(req.body);
-    
+
     const newAdvert = new Advert({
       name,
       description,
@@ -20,16 +22,11 @@ export const createAdvertController = async (req: Request, res: Response, next: 
       ownerId: req.user.id,
       status: 'AVAILABLE',
     });
+
     const createdAdvert = await newAdvert.save();
 
-    // respuesta: datos anuncio + mensaje de éxito
     res.status(201).json({
-      id: createdAdvert._id,
-      name: createdAdvert.name,
-      price: createdAdvert.price,
-      isSale: createdAdvert.isSale,
-      ownerId: createdAdvert.ownerId,
-      status: createdAdvert.status,
+      ...mapAdvertToResponse(createdAdvert),
       message: 'Anuncio creado con éxito',
     });
   } catch (error) {

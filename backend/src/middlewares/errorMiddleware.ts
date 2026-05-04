@@ -1,13 +1,13 @@
+import { NextFunction, Request, Response } from 'express';
 import status from 'http-status';
 import * as z from 'zod';
-import { NextFunction, Request, Response } from 'express';
 import { DomainError } from '../errors/domainError';
 
-const ErrorStatusCodes: Record<string, number> = {
-  EntityNotFoundError: status.NOT_FOUND, // 404
-  BusinessConflictError: status.CONFLICT, // 409
-  UnauthorizedError: status.UNAUTHORIZED, // 401
-  ForbiddenOperationError: status.FORBIDDEN, // 403
+const errorStatusCodes: Record<string, number> = {
+  EntityNotFoundError: status.NOT_FOUND,
+  BusinessConflictError: status.CONFLICT,
+  UnauthorizedError: status.UNAUTHORIZED,
+  ForbiddenOperationError: status.FORBIDDEN,
 };
 
 export const errorMiddleware = (
@@ -17,7 +17,9 @@ export const errorMiddleware = (
   _next: NextFunction
 ) => {
   if (error instanceof DomainError) {
-    const statusCode = ErrorStatusCodes[error.name] || status.INTERNAL_SERVER_ERROR; // 500
+    const statusCode =
+      errorStatusCodes[error.name] || status.INTERNAL_SERVER_ERROR;
+
     res.status(statusCode).json({ error: error.message });
     return;
   }
@@ -29,7 +31,7 @@ export const errorMiddleware = (
 
   console.error('[ERROR NO CONTROLADO]:', error);
 
-  // Las respuestas de error usan siempre la clave `error`.
+  // Respuesta genérica para no exponer detalles técnicos
   res.status(status.INTERNAL_SERVER_ERROR).json({
     error: 'Algo salió mal, inténtalo más tarde',
   });

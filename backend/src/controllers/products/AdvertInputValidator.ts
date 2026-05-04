@@ -1,12 +1,14 @@
-import * as z from 'zod';
 import { Types } from 'mongoose';
+import * as z from 'zod';
 
 const trimmedString = z.string().trim();
 
+// En creación de anuncio el precio debe ser mayor que 0
 const positivePrice = z.coerce.number().positive({
   error: 'El precio tiene que ser mayor a cero',
 });
 
+// En filtros permitimos 0, por ejemplo minPrice=0
 const nonNegativeNumber = z.coerce.number().nonnegative();
 
 const paginationValidator = {
@@ -14,12 +16,18 @@ const paginationValidator = {
   limit: z.coerce.number().int().positive().max(100).default(10),
 };
 
-const hasValidPriceRange = ({ minPrice, maxPrice }: { minPrice?: number; maxPrice?: number }) => {
+const hasValidPriceRange = ({
+  minPrice,
+  maxPrice,
+}: {
+  minPrice?: number;
+  maxPrice?: number;
+}) => {
   return minPrice === undefined || maxPrice === undefined || minPrice <= maxPrice;
 };
 
-const mongoIdSchema = z.string().refine(val => Types.ObjectId.isValid(val), {
-  message: 'El ID proporcionado no tiene un formato válido',
+const mongoIdSchema = z.string().refine((value) => Types.ObjectId.isValid(value), {
+  error: 'El ID proporcionado no tiene un formato válido',
 });
 
 export const createAdBodyValidator = z.object({

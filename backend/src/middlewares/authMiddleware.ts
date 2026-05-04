@@ -1,18 +1,19 @@
 import { NextFunction, Request, Response } from 'express';
-import { UnauthorizedError } from '../errors/domainError';
 import { securityService } from '../controllers/authentication/securityService';
+import { UnauthorizedError } from '../errors/domainError';
 
 export const authMiddleware = (req: Request, _res: Response, next: NextFunction) => {
   try {
-    const authenticationHeader = req.headers.authorization; // Authorization: Bearer <token>
+    // Formato esperado: Authorization: Bearer <token>
+    const authenticationHeader = req.headers.authorization;
 
     if (!authenticationHeader) {
       throw new UnauthorizedError('Falta la cabecera de autorización');
     }
 
-    const [scheme, token] = authenticationHeader.split(' ');
+    const [scheme, token, extra] = authenticationHeader.split(' ');
 
-    if (scheme !== 'Bearer' || !token) {
+    if (scheme !== 'Bearer' || !token || extra) {
       throw new UnauthorizedError('Formato de autorización inválido');
     }
 
