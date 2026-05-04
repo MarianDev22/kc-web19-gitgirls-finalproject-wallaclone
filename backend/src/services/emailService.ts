@@ -33,7 +33,7 @@ class EmailService {
     advertLink,
   }: SendContactEmailParams): Promise<void> {
     await this.transporter.sendMail({
-      from: `"${buyerUsername} a través de Wallaclone-GitGirls" <${this.mailFrom}>`,
+      from: `"Wallaclone GitGirls" <${this.mailFrom}>`,
       to: sellerEmail,
       subject: `Alguien se ha interesado en tu anuncio: ${advertName}`,
       text: `
@@ -48,7 +48,7 @@ class EmailService {
       Ver anuncio:
       ${advertLink}
 
-      Para contactar con el comprador responde directamente a este correo.
+      Para contactar con la persona interesada responde directamente a este correo.
       `,
       replyTo: buyerEmail,
     });
