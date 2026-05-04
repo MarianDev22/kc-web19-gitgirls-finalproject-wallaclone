@@ -1,4 +1,4 @@
-import { useState, type SyntheticEvent } from "react";
+import { useState, useEffect, type SyntheticEvent } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Footer from "../components/layout/Footer";
 import { loginUser } from "../services/authService";
@@ -10,6 +10,13 @@ interface LoginErrors {
 }
 export default function LoginPage() {
     const navigate = useNavigate();
+
+    useEffect(() => {
+        const token = localStorage.getItem("token");
+        if (token) {
+            navigate("/", { replace: true });
+        }
+    }, [navigate]);
 
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -57,7 +64,7 @@ export default function LoginPage() {
                 JSON.stringify(data.user ?? { username: username.trim() }),
             );
 
-            navigate("/");
+            navigate("/", { replace: true });
 
         } catch (error) {
             setErrors({
