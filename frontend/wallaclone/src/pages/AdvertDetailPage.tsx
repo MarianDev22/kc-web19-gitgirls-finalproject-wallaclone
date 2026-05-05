@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, type FormEvent } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { getAdvertById, type Advert } from "../services/advertService";
+import { contactSeller } from "../services/contactSellerService";
 import { deleteAdvert } from "../services/deleteAdvertService";
 
 type StoredUser = {
@@ -57,9 +58,15 @@ function getCurrentUserId() {
 function AdvertDetailPage() {
     const { advertId } = useParams();
     const navigate = useNavigate();
+
     const [advert, setAdvert] = useState<Advert | null>(null);
     const [isLoading, setIsLoading] = useState(true);
     const [errorMessage, setErrorMessage] = useState("");
+
+    const [contactMessage, setContactMessage] = useState("");
+    const [contactErrorMessage, setContactErrorMessage] = useState("");
+    const [contactSuccessMessage, setContactSuccessMessage] = useState("");
+    const [isContactLoading, setIsContactLoading] = useState(false);
 
     useEffect(() => {
         async function loadAdvert() {
@@ -114,7 +121,14 @@ function AdvertDetailPage() {
     }
 
     const currentUserId = getCurrentUserId();
+    const authToken = localStorage.getItem("token");
+
+    const isAuthenticated = Boolean(authToken && currentUserId);
     const canManageAdvert = Boolean(currentUserId && currentUserId === advert.ownerId);
+    const isSoldAdvert = advert.status === "SOLD";
+    const canContactSeller = Boolean(
+        isAuthenticated && !canManageAdvert && !isSoldAdvert,
+    );
 
     async function handleDeleteAdvert() {
         if (!advert) {
@@ -140,6 +154,52 @@ function AdvertDetailPage() {
                     ? error.message
                     : "No se ha podido eliminar el anuncio",
             );
+        }
+    }
+
+    async function handleContactSubmit(event: FormEvent<HTMLFormElement>) {
+        event.preventDefault();
+
+        if (!advert) {
+            setContactErrorMessage("No se ha podido identificar el anuncio");
+            setContactSuccessMessage("");
+            return;
+        }
+
+        const advertToContact = advert;
+        const trimmedMessage = contactMessage.trim();
+
+        if (!trimmedMessage) {
+            setContactErrorMessage("Escribe un mensaje antes de enviarlo");
+            setContactSuccessMessage("");
+            return;
+        }
+
+        if (!authToken) {
+            setContactErrorMessage("Debes iniciar sesión para contactar con el vendedor");
+            setContactSuccessMessage("");
+            return;
+        }
+
+        try {
+            setIsContactLoading(true);
+            setContactErrorMessage("");
+            setContactSuccessMessage("");
+
+            const response = await contactSeller(
+                advertToContact.id,
+                trimmedMessage,
+                authToken,
+            );
+
+            setContactSuccessMessage(response.message);
+            setContactMessage("");
+        } catch (error) {
+            setContactErrorMessage(
+                error instanceof Error ? error.message : "No se ha podido enviar el mensaje",
+            );
+        } finally {
+            setIsContactLoading(false);
         }
     }
 
@@ -227,6 +287,77 @@ function AdvertDetailPage() {
                                             </span>
                                         ))}
                                     </div>
+                                </div>
+                            )}
+
+                            {!canManageAdvert && (
+                                <div className="border-t border-gray-100 pt-6">
+                                    <h2 className="text-sm font-semibold uppercase tracking-wide text-gray-500">
+                                        Contactar con el vendedor
+                                    </h2>
+
+                                    {isSoldAdvert && (
+                                        <p className="mt-3 rounded-md bg-gray-50 p-4 text-sm text-gray-600">
+                                            Este anuncio ya está vendido, por lo que no se puede contactar
+                                            con el vendedor.
+                                        </p>
+                                    )}
+
+                                    {!isSoldAdvert && !isAuthenticated && (
+                                        <div className="mt-3 rounded-md bg-gray-50 p-4 text-sm text-gray-700">
+                                            <p>Inicia sesión para contactar con el vendedor de este anuncio.</p>
+
+                                            <Link
+                                                to="/login"
+                                                className="mt-3 inline-block rounded-md bg-[#00bba7] px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-[#009689]"
+                                            >
+                                                Iniciar sesión
+                                            </Link>
+                                        </div>
+                                    )}
+
+                                    {canContactSeller && (
+                                        <form onSubmit={handleContactSubmit} className="mt-4 space-y-4">
+                                            <div>
+                                                <label
+                                                    htmlFor="contactMessage"
+                                                    className="block text-sm font-semibold text-gray-700"
+                                                >
+                                                    Mensaje
+                                                </label>
+
+                                                <textarea
+                                                    id="contactMessage"
+                                                    value={contactMessage}
+                                                    onChange={(event) => setContactMessage(event.target.value)}
+                                                    rows={5}
+                                                    disabled={isContactLoading}
+                                                    className="mt-2 w-full rounded-md border border-gray-300 px-4 py-3 text-sm text-gray-900 outline-none transition-colors focus:border-[#00bba7] disabled:cursor-not-allowed disabled:bg-gray-100"
+                                                    placeholder="Hola, me interesa este anuncio. ¿Sigue disponible?"
+                                                />
+                                            </div>
+
+                                            {contactErrorMessage && (
+                                                <p className="rounded-md border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+                                                    {contactErrorMessage}
+                                                </p>
+                                            )}
+
+                                            {contactSuccessMessage && (
+                                                <p className="rounded-md border border-green-200 bg-green-50 px-4 py-3 text-sm text-green-700">
+                                                    {contactSuccessMessage}
+                                                </p>
+                                            )}
+
+                                            <button
+                                                type="submit"
+                                                disabled={isContactLoading}
+                                                className="rounded-md bg-[#00bba7] px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-[#009689] disabled:cursor-not-allowed disabled:opacity-60"
+                                            >
+                                                {isContactLoading ? "Enviando..." : "Enviar mensaje"}
+                                            </button>
+                                        </form>
+                                    )}
                                 </div>
                             )}
 
