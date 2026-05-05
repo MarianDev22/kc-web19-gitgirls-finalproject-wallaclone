@@ -1,13 +1,14 @@
 import type { RequestHandler } from 'express';
 import type { QueryFilter } from 'mongoose';
 import { Advert } from '../../models/Advert';
+import { User } from '../../models/User';
 import { escapeRegex } from '../../utils/stringUtils';
 import { getAdvertsQueryValidator } from './AdvertInputValidator';
 import { mapAdvertToResponse } from './advertResponseMapper';
 
 export const getAdsController: RequestHandler = async (req, res, next) => {
   try {
-    const { name, minPrice, maxPrice, tag, limit, page } =
+    const { name, minPrice, maxPrice, tag, username, limit, page } =
       getAdvertsQueryValidator.parse(req.query);
 
     const skip = (page - 1) * limit;
@@ -15,6 +16,22 @@ export const getAdsController: RequestHandler = async (req, res, next) => {
     const searchQuery: QueryFilter<Advert> = {
       status: { $in: ['AVAILABLE', 'RESERVED', 'SOLD'] },
     };
+
+    if (username) {
+      const user = await User.findOne({ username });
+
+      if (!user) {
+        res.status(200).json({
+          content: [],
+          total: 0,
+          page,
+          limit,
+        });
+        return;
+      }
+
+      searchQuery.ownerId = user._id;
+    }
 
     if (name) {
       searchQuery.name = { $regex: escapeRegex(name), $options: 'i' };

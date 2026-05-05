@@ -41,6 +41,7 @@ export const getAdvertsQueryValidator = z
     minPrice: nonNegativeNumber.optional(),
     maxPrice: nonNegativeNumber.optional(),
     tag: trimmedString.min(1).optional(),
+    username: trimmedString.min(1).optional(),
     ...paginationValidator,
   })
   .refine(hasValidPriceRange, {
