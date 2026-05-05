@@ -3,6 +3,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { getAdvertById, type Advert } from "../services/advertService";
 import { contactSeller } from "../services/contactSellerService";
 import { deleteAdvert } from "../services/deleteAdvertService";
+import { updateAdvertStatus } from "../services/updateAdvertStatusService";
 
 type StoredUser = {
     id?: string;
@@ -68,6 +69,9 @@ function AdvertDetailPage() {
     const [contactSuccessMessage, setContactSuccessMessage] = useState("");
     const [isContactLoading, setIsContactLoading] = useState(false);
 
+    const [statusErrorMessage, setStatusErrorMessage] = useState("");
+    const [isStatusLoading, setIsStatusLoading] = useState(false);
+
     useEffect(() => {
         async function loadAdvert() {
             if (!advertId) {
@@ -132,6 +136,18 @@ function AdvertDetailPage() {
 
     const advertTypeLabel = advert.isSale ? "Se vende" : "Se busca";
 
+    const reservedNextStatus: Advert["status"] =
+        advert.status === "RESERVED" ? "AVAILABLE" : "RESERVED";
+
+    const soldNextStatus: Advert["status"] =
+        advert.status === "SOLD" ? "AVAILABLE" : "SOLD";
+
+    const reservedButtonLabel =
+        advert.status === "RESERVED" ? "Desmarcar reservado" : "Marcar como reservado";
+
+    const soldButtonLabel =
+        advert.status === "SOLD" ? "Desmarcar vendido" : "Marcar como vendido";
+
     const contactTitle = advert.isSale
         ? "Hablar con el vendedor"
         : "Hablar con la persona que busca";
@@ -172,6 +188,37 @@ function AdvertDetailPage() {
                     ? error.message
                     : "No hemos podido eliminar el anuncio",
             );
+        }
+    }
+
+    async function handleStatusChange(nextStatus: Advert["status"]) {
+        if (!advert) {
+            return;
+        }
+
+        try {
+            setIsStatusLoading(true);
+            setStatusErrorMessage("");
+
+            const updatedAdvert = await updateAdvertStatus(advert.id, nextStatus);
+
+            setAdvert((currentAdvert) =>
+                currentAdvert
+                    ? {
+                        ...currentAdvert,
+                        ...updatedAdvert,
+                        owner: updatedAdvert.owner ?? currentAdvert.owner,
+                    }
+                    : updatedAdvert,
+            );
+        } catch (error) {
+            setStatusErrorMessage(
+                error instanceof Error
+                    ? error.message
+                    : "No se ha podido actualizar el estado del anuncio",
+            );
+        } finally {
+            setIsStatusLoading(false);
         }
     }
 
@@ -264,7 +311,7 @@ function AdvertDetailPage() {
                                 </span>
                             </div>
 
-                            <p className="text-4xl foºnt-bold text-gray-900">
+                            <p className="text-4xl font-bold text-gray-900">
                                 {new Intl.NumberFormat("es-ES", {
                                     style: "currency",
                                     currency: "EUR",
@@ -378,23 +425,61 @@ function AdvertDetailPage() {
                                 </div>
                             )}
 
-                            {canManageAdvert && (
-                                <div className="flex flex-wrap gap-3 border-t border-gray-100 pt-6">
-                                    <Link
-                                        to={`/adverts/${advert.id}/edit`}
-                                        state={{ advert }}
-                                        className="rounded-md bg-[#00bba7] px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-[#009689]"
-                                    >
-                                        Editar anuncio
-                                    </Link>
+{canManageAdvert && (
+                                <div className="space-y-4 border-t border-gray-100 pt-6">
+                                    <div>
+                                        <h2 className="text-sm font-semibold uppercase tracking-wide text-gray-500">
+                                            Gestionar estado
+                                        </h2>
 
-                                    <button
-                                        type="button"
-                                        onClick={handleDeleteAdvert}
-                                        className="rounded-md border border-red-500 px-4 py-2 text-sm font-semibold text-red-600 transition-colors hover:bg-red-500 hover:text-white"
-                                    >
-                                        Eliminar anuncio
-                                    </button>
+                                        <div className="mt-3 flex flex-wrap gap-3">
+                                            <button
+                                                type="button"
+                                                disabled={isStatusLoading}
+                                                onClick={() => void handleStatusChange(reservedNextStatus)}
+                                                className="rounded-md border border-amber-500 px-4 py-2 text-sm font-semibold text-amber-700 transition-colors hover:bg-amber-500 hover:text-white disabled:cursor-not-allowed disabled:opacity-60"
+                                            >
+                                                {isStatusLoading && reservedNextStatus === "RESERVED"
+                                                    ? "Actualizando..."
+                                                    : reservedButtonLabel}
+                                            </button>
+
+                                            <button
+                                                type="button"
+                                                disabled={isStatusLoading}
+                                                onClick={() => void handleStatusChange(soldNextStatus)}
+                                                className="rounded-md border border-gray-700 px-4 py-2 text-sm font-semibold text-gray-700 transition-colors hover:bg-gray-700 hover:text-white disabled:cursor-not-allowed disabled:opacity-60"
+                                            >
+                                                {isStatusLoading && soldNextStatus === "SOLD"
+                                                    ? "Actualizando..."
+                                                    : soldButtonLabel}
+                                            </button>
+                                        </div>
+
+                                        {statusErrorMessage && (
+                                            <p className="mt-3 rounded-md border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+                                                {statusErrorMessage}
+                                            </p>
+                                        )}
+                                    </div>
+
+                                    <div className="flex flex-wrap gap-3">
+                                        <Link
+                                            to={`/adverts/${advert.id}/edit`}
+                                            state={{ advert }}
+                                            className="rounded-md bg-[#00bba7] px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-[#009689]"
+                                        >
+                                            Editar anuncio
+                                        </Link>
+
+                                        <button
+                                            type="button"
+                                            onClick={handleDeleteAdvert}
+                                            className="rounded-md border border-red-500 px-4 py-2 text-sm font-semibold text-red-600 transition-colors hover:bg-red-500 hover:text-white"
+                                        >
+                                            Eliminar anuncio
+                                        </button>
+                                    </div>
                                 </div>
                             )}
                         </div>
