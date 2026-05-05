@@ -25,15 +25,53 @@ export type CreateAdvertPayload = {
     tags: string[];
 };
 
-type GetAdvertsResponse = {
+export type GetAdvertsResponse = {
     content: Advert[];
     total: number;
     page: number;
     limit: number;
 };
 
-export async function getLatestAdverts(): Promise<GetAdvertsResponse> {
-    const response = await fetch(`${API_BASE_URL}/adverts?limit=12&page=1`);
+export type GetAdvertsParams = {
+    name?: string;
+    minPrice?: string;
+    maxPrice?: string;
+    tag?: string;
+    page?: number;
+    limit?: number;
+};
+
+function buildAdvertsQuery(params: GetAdvertsParams = {}) {
+    const searchParams = new URLSearchParams();
+
+    searchParams.set("limit", String(params.limit ?? 12));
+    searchParams.set("page", String(params.page ?? 1));
+
+    if (params.name?.trim()) {
+        searchParams.set("name", params.name.trim());
+    }
+
+    if (params.minPrice?.trim()) {
+        searchParams.set("minPrice", params.minPrice.trim());
+    }
+
+    if (params.maxPrice?.trim()) {
+        searchParams.set("maxPrice", params.maxPrice.trim());
+    }
+
+    if (params.tag?.trim()) {
+        searchParams.set("tag", params.tag.trim());
+    }
+
+    return searchParams.toString();
+}
+
+export async function getAdverts(
+    params: GetAdvertsParams = {},
+): Promise<GetAdvertsResponse> {
+    const query = buildAdvertsQuery(params);
+
+    const response = await fetch(`${API_BASE_URL}/adverts?${query}`);
 
     const data = await response.json().catch(() => null);
 
@@ -44,6 +82,13 @@ export async function getLatestAdverts(): Promise<GetAdvertsResponse> {
     }
 
     return data;
+}
+
+export async function getLatestAdverts(): Promise<GetAdvertsResponse> {
+    return getAdverts({
+        limit: 12,
+        page: 1,
+    });
 }
 
 export async function getAdvertById(advertId: string): Promise<Advert> {
